@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="infect">
+	
+	<select id="infectList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MWW179RM(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_HOS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_GBN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_FDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_TDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_GUN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_TNM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_NAM, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="infectStdList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MWW179R1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_F999NM1, mode=IN, jdbcType=VARCHAR}
+							  , #{I_F999NM4, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+</mapper>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qna">
+	<resultMap id="rtn_hash_qna" type="java.util.HashMap">
+	    <result property="S015COR"  column="S015COR"/>
+	    <result property="S015SEQ"  column="S015SEQ"/>
+	    <result property="S015DCL"  column="S015DCL"/>
+	    <result property="S015PDNO" column="S015PDNO"/>
+	    <result property="S015TIT"  column="S015TIT"/>
+	    <result property="S015CON"  column="S015CON" javaType="java.lang.String"/>
+	    <result property="S015CNM"  column="S015CNM"/>
+	    <result property="S015CMA"  column="S015CMA"/>
+	    <result property="S015IYN"  column="S015IYN"/>
+	    <result property="S015RCT"  column="S015RCT"/>
+	 </resultMap>
+
+	<select id="qnaList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS015R1(
+								#{I_COR,    mode=IN, jdbcType=VARCHAR}
+                              , #{I_UID,    mode=IN, jdbcType=VARCHAR}
+                              , #{I_IP,     mode=IN, jdbcType=VARCHAR}	
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              , #{I_DCL,	mode=IN, jdbcType=VARCHAR}
+                              , #{I_TIT,	mode=IN, jdbcType=VARCHAR}
+                              , #{I_CON,	mode=IN, jdbcType=VARCHAR}
+                              , #{I_PDNOC,	mode=IN, jdbcType=VARCHAR}
+                              , #{I_FWDT,	mode=IN,  jdbcType=DECIMAL}
+                              , #{I_TWDT,	mode=IN,  jdbcType=DECIMAL}				 
+			) 
+		]]>
+	</select>
+	
+	<select id="qnaDtl" statementType="CALLABLE" parameterType="HashMap"  resultMap="rtn_hash_qna">
+		<![CDATA[
+			call WEBOBJLIB.MWS015R3(
+									#{I_COR, mode=IN, jdbcType=VARCHAR}
+                              	  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+                              	  , #{I_IP, mode=IN, jdbcType=VARCHAR}	
+								  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              	  , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              	  , #{I_SEQ, mode=IN, jdbcType=DECIMAL}				 
+			) 
+		]]>
+	</select>
+	
+	<insert id="qnaSave" statementType="CALLABLE" parameterType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS015MC(
+									#{I_COR,    mode=IN,  jdbcType=VARCHAR}
+								  , #{I_UID,    mode=IN,  jdbcType=VARCHAR}
+							  	  , #{I_IP,     mode=IN,  jdbcType=VARCHAR}
+								  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              	  , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+							  	  , #{I_SEQ,    mode=IN,  jdbcType=DECIMAL}
+							  	  , #{I_DCL,    mode=IN,  jdbcType=VARCHAR}
+							  	  , #{I_PDNO,   mode=IN,  jdbcType=VARCHAR}
+								  , #{I_TIT,    mode=IN,  jdbcType=VARCHAR}
+								  , #{I_CON,    mode=IN,  javaType=java.lang.String}
+								  , #{I_CNM,    mode=IN,  jdbcType=VARCHAR}
+								  , #{I_CMA,    mode=IN,  jdbcType=VARCHAR}
+								  , #{I_IYN,    mode=IN,  jdbcType=VARCHAR}
+								  , #{I_RCT,    mode=IN,  jdbcType=DECIMAL}
+			)
+		]]>
+	</insert>
+	
+	<insert id="qnaAttachSave" statementType="CALLABLE" parameterType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS015DC(
+									#{I_COR,  mode=IN, jdbcType=VARCHAR}
+							  	  , #{I_SEQ,  mode=IN, jdbcType=DECIMAL}
+							  	  , #{I_FSQ,  mode=IN, jdbcType=DECIMAL}
+							  	  , #{I_FPT,  mode=IN, jdbcType=VARCHAR}
+								  , #{I_FNM,  mode=IN, jdbcType=VARCHAR}
+								  , #{I_FSNM, mode=IN, jdbcType=VARCHAR}
+								  , #{I_UID,  mode=IN, jdbcType=VARCHAR}
+							  	  , #{I_IP,   mode=IN, jdbcType=VARCHAR}
+								  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              	  , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}				 
+			)
+		]]>
+	</insert>
+	
+	<select id="qnaNextVal" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS015MS1(
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_UID, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_IP, 	mode=IN,  jdbcType=VARCHAR}
+							  ,	#{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+		)
+		]]>
+	</select>
+	
+	<update id="qnaRdCntUdt" statementType="CALLABLE" parameterType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS015RU(
+								#{I_COR, mode=IN, jdbcType=VARCHAR}
+                              , #{I_UID, mode=IN, jdbcType=VARCHAR}
+                              , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  ,	#{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              ,	#{I_SEQ,  mode=IN, jdbcType=DECIMAL}	
+		)
+		]]>
+	</update>
+	
+	<update id="qnaUdt" statementType="CALLABLE" parameterType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS015MU(
+								#{I_COR, mode=IN, jdbcType=VARCHAR}
+                              , #{I_UID,  mode=IN, jdbcType=VARCHAR}
+                              , #{I_IP,   mode=IN, jdbcType=VARCHAR}
+                              ,	#{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+							  , #{I_SEQ,  mode=IN, jdbcType=DECIMAL}
+                              , #{I_DCL,  mode=IN, jdbcType=VARCHAR}
+                              , #{I_PDNO, mode=IN, jdbcType=VARCHAR}
+                              , #{I_TIT,  mode=IN, jdbcType=VARCHAR}
+                              , #{I_CON,  mode=IN, javaType=java.lang.String}
+                              , #{I_CNM,  mode=IN, jdbcType=VARCHAR}
+                              , #{I_CMA,  mode=IN, jdbcType=VARCHAR}
+                              , #{I_IYN,  mode=IN, jdbcType=VARCHAR}
+			)
+		]]>
+	</update>
+	
+	<select id="qnaAttachList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS015DR(
+							    #{I_COR, 	mode=IN, 	jdbcType=VARCHAR}
+							  , #{I_UID,  	mode=IN, 	jdbcType=VARCHAR}
+                              , #{I_IP,   	mode=IN, 	jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, 	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, 	jdbcType=VARCHAR}
+							  ,	#{I_SEQ,	mode=IN,	jdbcType=DECIMAL}
+			)
+		]]>
+	</select>
+	
+	<delete id="qnaDelete" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWS015D( 
+								 #{I_COR, 		mode=IN, 		jdbcType=VARCHAR}
+								,#{I_UID,  		mode=IN, 		jdbcType=VARCHAR}
+                                ,#{I_IP,   		mode=IN, 		jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{I_SEQ,   	mode=IN, 		jdbcType=DECIMAL}
+					)
+	</delete>
+	
+	<update id="qnaAttachUpt" statementType="CALLABLE" parameterType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS015DU(
+								#{I_COR,	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_UID,  	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_IP,   	mode=IN,  jdbcType=VARCHAR}
+                              ,	#{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+							  , #{I_SEQ,  	mode=IN,  jdbcType=DECIMAL}
+							  , #{I_FSQ,  	mode=IN,  jdbcType=DECIMAL}
+							  , #{I_FPT,  	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_FNM, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_FSNM,  	mode=IN,  jdbcType=VARCHAR}
+			)
+		]]>
+	</update>
+</mapper>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main">
+	<resultMap id="rtn_hash_notice" type="java.util.HashMap">
+		<result property="S014COR"  column="S014COR"/>
+		<result property="S014SEQ"  column="S014SEQ"/>
+		<result property="S014WDT"  column="S014WDT"/>
+		<result property="S014CNM"  column="S014CNM"/>
+		<result property="S014DNO"  column="S014DNO"/>
+		<result property="S014DCL"  column="S014DCL"/>
+		<result property="S002DCL"  column="S002DCL"/>
+		<result property="S014SDV"  column="S014SDV"/>
+		<result property="S002SDV"  column="S002SDV"/>
+		<result property="S014PYN"  column="S014PYN"/>
+		<result property="S002PYN"  column="S002PYN"/>
+		<result property="S014RYN"  column="S014RYN"/>
+		<result property="S014PFR"  column="S014PFR"/>
+		<result property="S014PTO"  column="S014PTO"/>
+		<result property="S014LCO"  column="S014LCO"/>
+		<result property="S014TCO"  column="S014TCO"/>
+		<result property="S014WID"  column="S014WID"/>
+		<result property="S014HIT"  column="S014HIT"/>
+		<result property="S014TIT"  column="S014TIT"/>
+		<result property="S014CON"  column="S014CON" javaType="java.lang.String"/>
+		<result property="S014CUR"  column="S014CUR"/>
+		<result property="S014DYN"  column="S014DYN"/>
+		<result property="S014FPT"  column="S014FPT"/>
+		<result property="S014FNM"  column="S014FNM"/>
+		<result property="S014FSNM"  column="S014FSNM"/>
+	 </resultMap>
+	
+	<select id="menuList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS001R5(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	<select id="AuthPage" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS001R4(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_PTH, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	
+	<select id="Favorites" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS006R(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="mainNotice" statementType="CALLABLE" parameterType="HashMap"  resultMap="rtn_hash_notice">
+		<![CDATA[
+			call WEBOBJLIB.MWS014R4(
+									#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+                              	  , #{I_UID, 	mode=IN,  jdbcType=VARCHAR}
+                              	  , #{I_IP, 	mode=IN,  jdbcType=VARCHAR}	
+								  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              	  , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              	  , #{I_SDV, 	mode=IN,  jdbcType=DECIMAL}				 
+			) 
+		]]>
+	</select>
+	<select id="mainContNotice" statementType="CALLABLE" parameterType="HashMap"  resultMap="rtn_hash_notice">
+		<![CDATA[
+			call WEBOBJLIB.MWS014R5(
+									#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+                              	  , #{I_UID, 	mode=IN,  jdbcType=VARCHAR}
+                              	  , #{I_IP, 	mode=IN,  jdbcType=VARCHAR}	
+								  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              	  , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              	  , #{I_SDV, 	mode=IN,  jdbcType=DECIMAL}				 
+                              	  , #{I_DCL, 	mode=IN,  jdbcType=DECIMAL}				 
+			) 
+		]]>
+	</select>
+	
+	<insert id="FavoritesSave" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWS006C( 
+								#{I_COR,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{I_MCD,		mode=IN,		jdbcType=VARCHAR}
+					)
+	</insert>
+	<delete id="FavoritesDel" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWS006D( 
+								#{I_COR,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{I_MCD,		mode=IN,		jdbcType=VARCHAR}
+					)
+	</delete>
+	
+	<update id="chatbotLoginKey" statementType="CALLABLE" parameterType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWS005C5_CHATBOT(#{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              		  , #{I_HCK,	mode=IN,	jdbcType=VARCHAR}                                                                                          
+                              		  ) 
+    ]]>
+    </update>
+</mapper>

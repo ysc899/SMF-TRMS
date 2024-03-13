@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="statsItem">
+	
+	<select id="statsItemList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWST040R(
+								#{I_COR,		mode=IN,	jdbcType=CHAR}
+								,#{I_UID,		mode=IN,	jdbcType=CHAR}
+								,#{I_IP,		mode=IN,	jdbcType=CHAR}
+								,#{O_MSGCOD,	mode=OUT,	jdbcType=CHAR}
+								,#{O_ERRCOD,	mode=OUT,	jdbcType=CHAR}
+								,#{I_FDT,		mode=IN,	jdbcType=DECIMAL}
+								,#{I_TDT,		mode=IN,	jdbcType=DECIMAL}
+								,#{I_HOS,		mode=IN,	jdbcType=CHAR}
+								,#{I_GAD,		mode=IN,	jdbcType=CHAR}
+								,#{I_ECF,		mode=IN,	jdbcType=VARCHAR}
+								,#{I_PNN,		mode=IN,	jdbcType=CHAR}		/*I_PNN	--이전／다음(C/N/P)*/         
+								,#{I_ICNT,		mode=IN,	jdbcType=DECIMAL}	/*I_ICNT	--읽을건수		*/           
+								,#{I_NAMP,		mode=IN,	jdbcType=CHAR}		/*I_NAMP	--검사명(이전 차트 조회시 - 첫번째 검사명, 이후 차트 조회시 마지막 검사명)		*/           
+								,#{I_GCD,		mode=IN,	jdbcType=CHAR}		/*I_GCD	--검사코드		*/           
+                              )
+		]]>
+	</select>
+	<select id="statsItem01List" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWST041R(#{I_COR,		mode=IN,	jdbcType=CHAR}
+									,#{I_UID,		mode=IN,	jdbcType=CHAR}
+									,#{I_IP,		mode=IN,	jdbcType=CHAR}
+									,#{O_MSGCOD,	mode=OUT,	jdbcType=CHAR}
+									,#{O_ERRCOD,	mode=OUT,	jdbcType=CHAR}
+									,#{I_FDT,		mode=IN,	jdbcType=DECIMAL}
+									,#{I_TDT,		mode=IN,	jdbcType=DECIMAL}
+									,#{I_HOS,		mode=IN,	jdbcType=CHAR}
+									,#{I_GCD,		mode=IN,	jdbcType=CHAR}
+									,#{I_ECF,	mode=IN,	jdbcType=VARCHAR}
+									,#{I_PNN,		mode=IN,	jdbcType=CHAR}
+									,#{I_ICNT,		mode=IN,	jdbcType=DECIMAL}
+									,#{I_PDAT,		mode=IN,	jdbcType=DECIMAL}
+									,#{I_PJNO,		mode=IN,	jdbcType=DECIMAL}
+									,#{I_PGCD,		mode=IN,	jdbcType=CHAR}
+									,#{I_PACD,		mode=IN,	jdbcType=CHAR}  
+                              )
+		]]>
+	</select>
+</mapper>

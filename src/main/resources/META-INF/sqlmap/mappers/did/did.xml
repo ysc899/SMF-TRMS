@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="did">
+
+	<select id="patInfoList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.SEL_DID_USER(#{I_GIC, mode=IN, jdbcType=VARCHAR}
+		                           ,#{I_BDT_FROM, mode=IN, jdbcType=DECIMAL}
+		                           ,#{I_BDT_TO, mode=IN, jdbcType=DECIMAL}
+		                           ,#{I_CD2, mode=IN, jdbcType=VARCHAR}
+		                           )
+	]]>
+	</select>
+
+	<select id="patList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.SEL_DID_RLT(#{I_JDAT, mode=IN, jdbcType=DECIMAL}
+		                          ,#{I_JNO, mode=IN, jdbcType=DECIMAL}
+		                          ,#{I_CD2, mode=IN, jdbcType=VARCHAR}
+		                           )
+	]]>
+	</select>
+
+	<select id="patInfoList2" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		SELECT t.F600DAT  
+		      ,t.F600JNO  
+		      ,t.F600HOS  
+		      ,t.F600BDT  
+		      ,h.F100NAM  
+		      ,h.F100SEX  
+		      ,h.F100BDT  
+		      ,s.S100PCD  
+		      ,s.S100PNO
+		      ,ECHELON.PI_DECSN (h.F100JN1) F100JN1
+		  FROM MCLISDLIB.MC600M@ AS t
+		  LEFT JOIN MCLISDLIB.MC100H@ AS h
+		         ON F600COR = F100COR 
+		        AND F600DAT = F100DAT
+		        AND F600JNO = F100JNO
+		  LEFT JOIN MCLISDLIB.MC100HSUB@ AS s
+		         ON F600COR = S100COR 
+		        AND F600DAT = S100DAT
+		        AND F600JNO = S100JNO     
+		  WHERE t.F600COR = 'NML'
+		    AND t.F600HOS IN (SELECT F120PCD FROM MCLISDLIB.MC120M@ 
+		                       WHERE F120COR = 'NML'
+		                         AND F120GIC = #{I_GIC, mode=IN, jdbcType=VARCHAR})
+		    AND t.F600BDT >= #{I_BDT_FROM, mode=IN, jdbcType=DECIMAL}
+		    AND t.F600BDT <= #{I_BDT_TO, mode=IN, jdbcType=DECIMAL}
+		    AND t.F600GCD IN (SELECT DISTINCT F999CD3 
+		                        FROM MCLISDLIB."MC999D@" 
+		                       WHERE F999COR = 'NML'
+                                 AND F999CD1 = 'CLIC'
+		                         AND F999CD2 = #{I_CD2, mode=IN, jdbcType=VARCHAR})
+		    AND (trim(t.F600ACD) = '' OR t.F600ACD = '01') --부속코드 없거나 01
+	]]>
+	</select>
+
+	<select id="patList2" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		SELECT t.F600DAT  --접수일자
+		      ,t.F600JNO  --접수번호
+		      ,p.F100NAM  --환자성명
+		      ,t.F600CHR  --검사결과
+		      ,t.F600GCD  --검사코드
+		      ,t.F600ACD  --부속코드
+		      ,m.F010TCD  --검체코드
+		      ,t.F600GDT  --검사일자
+		      ,t.F600BDT  --보고일자
+		      ,m.F010FKN  --검사명
+		      ,t.F600HOS  --병원코드
+		      ,h.F120FNM  --검사의뢰기관명(한글)
+		      ,he.F120FNM F120FNM_EN --검사의뢰기관명(영문)
+		      ,m.F010MSC  --검사방법코드
+		      ,(SELECT F028TXT FROM mclisdlib.MC028D@
+		         WHERE F028COR = F600COR
+		           AND F028GCD = F010MSC
+		           AND F028SEQ = 0) F028TXT  --검사방법
+		  FROM MCLISDLIB.MC600M@ AS t  -- 검사결과
+		  LEFT JOIN MCLISDLIB.MC100H@ AS p  --환자정보
+                 ON F600COR = F100COR 
+                AND F600DAT = F100DAT
+                AND F600JNO = F100JNO
+		  LEFT JOIN MCLISDLIB.MC010M@ AS m --검사마스터
+		         ON t.F600COR = m.F010COR 
+		        AND t.F600GCD = m.F010GCD
+		  LEFT JOIN MCLISDLIB.MC120M@ AS h --병원마스터
+		         ON t.F600COR = h.F120COR 
+		        AND t.F600HOS = h.F120PCD
+		  LEFT JOIN MCLISDLIB.MC120ME@ AS he --병원마스터(영문)
+		         ON t.F600COR = he.F120COR 
+		        AND t.F600HOS = he.F120PCD
+		 WHERE t.F600COR = 'NML'
+		   AND t.F600DAT = #{I_JDAT,	mode=IN, jdbcType=DECIMAL}
+           AND t.F600JNO = #{I_JNO,	mode=IN, jdbcType=DECIMAL}
+           AND t.F600GCD IN (SELECT DISTINCT F999CD3 
+                        FROM MCLISDLIB."MC999D@" 
+                       WHERE F999COR = 'NML'
+                             AND F999CD1 = 'CLIC'
+                         AND F999CD2 = #{I_CD2, mode=IN, jdbcType=VARCHAR})
+           AND (trim(t.F600ACD) = '' OR t.F600ACD = '01') --부속코드 없거나 01
+	]]>
+	</select>
+	
+</mapper>

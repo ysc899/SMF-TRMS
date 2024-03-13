@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sysTestReqStats">
+	
+	<select id="sysTestReqStatsList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWST030R(
+								#{I_COR,		mode=IN,	jdbcType=CHAR}
+								,#{I_UID,		mode=IN,	jdbcType=CHAR}
+								,#{I_IP,		mode=IN,	jdbcType=CHAR}
+								,#{O_MSGCOD,	mode=OUT,	jdbcType=CHAR}
+								,#{O_ERRCOD,	mode=OUT,	jdbcType=CHAR}
+								,#{I_FDT,		mode=IN,	jdbcType=DECIMAL}
+								,#{I_TDT,		mode=IN,	jdbcType=DECIMAL}
+								,#{I_HOS_A,		mode=IN,	jdbcType=CHAR}		/*-병원코드 5*20   */
+								,#{I_GAD,		mode=IN,	jdbcType=CHAR}		/*--검사코드+부속코드 */
+								,#{I_ECF,		mode=IN,	jdbcType=VARCHAR}
+								,#{I_PNN,		mode=IN,	jdbcType=CHAR}		/*I_PNN	--이전／다음(C/N/P)*/         
+								,#{I_ICNT,		mode=IN,	jdbcType=DECIMAL}	/*I_ICNT	--읽을건수		*/           
+								,#{I_HOS,		mode=IN,	jdbcType=CHAR}		/*I_HOS	--병원코드		*/           
+								,#{I_GCD,		mode=IN,	jdbcType=CHAR}		/*I_GCD	--검사코드		*/           
+								,#{I_ACD,		mode=IN,	jdbcType=CHAR}     	/*I_ACD	--부속코드		*/
+                              )
+		]]>
+	</select>
+</mapper>

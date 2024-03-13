@@ -1,0 +1,103 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	   					   http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd">
+	   					   	
+	<bean id="egov.propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:/META-INF/property/db.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+	<!--file DB  -->
+	
+	<!--
+	<jdbc:embedded-database id="dataSource"> 
+		<jdbc:script location= "classpath:/META-INF/db/ddl.sql"/>
+		<jdbc:script location= "classpath:/META-INF/db/dml.sql"/>
+	</jdbc:embedded-database>
+		 -->
+	
+
+
+
+
+
+	<!--DB 연결 정보  -->
+	<!--     
+    <bean id="dataSourceSpied" class="org.apache.commons.dbcp.BasicDataSource"
+			p:driverClassName="${db.Driver}" 
+			p:url="${db.ConnectionURL}" 
+			p:username="${db.Username}"
+			p:password="${db.Password}"/>     
+
+	 -->
+
+	<bean id="dataSourceSpied" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+		  p:driverClassName="${db.Driver}"
+		  p:url="${db.ConnectionURL}"
+		  p:username="${db.Username}"
+		  p:password="${db.Password}"
+		  p:maxActive="-1"
+		  p:maxIdle="-1"
+	/>
+
+	<bean id="dataSourceSpiedChaDb" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+		  p:driverClassName="${chaDb.Driver}"
+		  p:url="${chaDb.ConnectionURL}"
+		  p:username="${chaDb.Username}"
+		  p:password="${chaDb.Password}"
+		  p:maxActive="-1"
+		  p:maxIdle="-1"
+	/>
+			
+	<!-- normal : net.sf.log4jdbc.Log4jdbcProxyDataSource -->
+	<!-- custom : kr.co.softtrain.custom.log.Log4JdbcCustomFormatter -->
+
+	<bean id="ds-one" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="dataSourceSpied" />
+		<property name="logFormatter">
+			<bean class="kr.co.softtrain.custom.log.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE" />
+				<property name="margin" value="8" />
+				<property name="sqlPrefix" value="SQL:" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="ds-chadb" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="dataSourceSpiedChaDb" />
+		<property name="logFormatter">
+			<bean class="kr.co.softtrain.custom.log.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE" />
+				<property name="margin" value="8" />
+				<property name="sqlPrefix" value="SQL:" />
+			</bean>
+		</property>
+	</bean>
+    
+    
+    <bean id="dataSourceSpied2" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+		p:driverClassName="${db2.Driver}" 
+		p:url="${db2.ConnectionURL}" 
+		p:username="${db2.Username}"
+		p:password="${db2.Password}"
+		p:maxActive="-1"
+		p:maxIdle="-1"/>   
+    
+    <bean id="ds-two" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+        <constructor-arg ref="dataSourceSpied2" />
+        <property name="logFormatter">
+            <bean class="kr.co.softtrain.custom.log.Log4JdbcCustomFormatter">
+	            <property name="loggingType" value="MULTI_LINE" />
+	            <property name="margin" value="8" />
+	            <property name="sqlPrefix" value="SQL:" />
+            </bean>   
+        </property>
+    </bean>
+    
+</beans>

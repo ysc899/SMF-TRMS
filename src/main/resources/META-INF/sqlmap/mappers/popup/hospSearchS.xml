@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hospSearchS">
+
+	<select id="hospSearchSList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWHOSLST(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_FNM,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_MCD,	mode=IN,	jdbcType=VARCHAR}
+                              )
+		]]>
+	</select>
+	
+	<select id="patSearchSList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWPATLST(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_CHN,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_NAM,	mode=IN,	jdbcType=VARCHAR}
+                              )
+		]]>
+	</select>
+
+	<select id="testSearchMList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWTESTLST(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_FKN,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_SOCD,	mode=IN,	jdbcType=VARCHAR}
+                              )
+		]]>
+	</select>
+	
+	<select id="testSearchMListA" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWTESTLSTA(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_FKN,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_SOCD,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_HOS, 	mode=IN, 	jdbcType=VARCHAR}  	
+                              )
+		]]>
+	</select>
+	
+		<select id="hospSearchA" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWHOSLST2(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              )
+		]]>
+	</select>
+</mapper>

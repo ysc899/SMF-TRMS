@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="realtime">
+	<!-- <resultMap id="rtn_hash_qna" type="java.util.HashMap">
+	    <result property="S015COR"  column="S015COR"/>
+	    <result property="S015SEQ"  column="S015SEQ"/>
+	    <result property="S015DCL"  column="S015DCL"/>
+	    <result property="S015PDNO" column="S015PDNO"/>
+	    <result property="S015TIT"  column="S015TIT"/>
+	    <result property="S015CON"  column="S015CON" javaType="java.lang.String"/>
+	    <result property="S015CNM"  column="S015CNM"/>
+	    <result property="S015CMA"  column="S015CMA"/>
+	    <result property="S015IYN"  column="S015IYN"/>
+	    <result property="S015RCT"  column="S015RCT"/>
+	 </resultMap> -->
+
+	<!-- 실시간현황 : 분야별 검사 실시 현황 (전일접수) -->
+	<select id="realtimeList5" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call MCLISOLIB.SEL02_REALTIMESTSBYFIELD_MC600M_SP2(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_FDT, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_TDT, 	mode=IN,  jdbcType=VARCHAR}
+			) 
+		]]>
+	</select>
+
+	<!-- 실시간현황 : 접수현황에 따른 검체별 개수 (조회일 기준) -->
+	<select id="realtimeList1" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call MCLISOLIB.SEL02_DAYLABTCDCOUNT_MC111D_SP(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_FDT, 	mode=IN,  jdbcType=VARCHAR}
+			) 
+		]]>
+	</select>	
+
+	<!-- 실시간현황 : 근무 현황 (조회일 기준) -->
+	<select id="realtimeList6" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call MCLISOLIB.SEL02_DAYNIGHTWORKINGRATE_MC615M_SP(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_FDT, 	mode=IN,  jdbcType=VARCHAR}
+			) 
+		]]>
+	</select>
+	
+	<!-- 실시간현황 : 본원 TS SYSTEM 가동률 (실시간현황) -->
+	<select id="realtimeList3" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call MCLISOLIB.SEL02_TSRUNPERCENT_MDTRAC_SP(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_FDT, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_TDT, 	mode=IN,  jdbcType=VARCHAR}
+			) 
+		]]>
+	</select>
+	
+	<!-- 누적현황 : 야간검사 결과보고율 (전일 접수) -->
+	<select id="realtimeList8" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call MCLISOLIB.SEL02_RSTORREPORTPERCENT_MC600M_SP(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_FDT, 	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_TDT, 	mode=IN,  jdbcType=VARCHAR}
+			) 
+		]]>
+	</select>
+	
+	<!-- 누적 현황 : 검체오류 현황 (전일 접수) -->
+	<select id="realtimeList2" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call MCLISOLIB.SEL02_DAYERRORCNT_MC400M_SP(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_FDT, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_TDT, 	mode=IN,  jdbcType=VARCHAR}
+			) 
+		]]>
+	</select>
+	
+	<!-- 누적현황 : 양성률 (전일 보고) -->
+	<select id="realtimeList7" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call MCLISOLIB.SEL02_HAKPOSITIVERATEOVERLIST_DMPOSM_SP(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_FDT, 	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_TDT, 	mode=IN,  jdbcType=VARCHAR}
+			) 
+		]]>
+	</select>
+	
+	<!-- 누적현황 : 주단위 건수 추이 (최근 일주일) -->
+	<select id="realtimeList4" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call MCLISOLIB.SEL02_BRANCHWEEKLYCNT_MC600M_SP(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+			) 
+		]]>
+	</select>
+	
+	<!-- 코로나현황 : 코로나 검사 실시 현황 (조회일 기준) -->
+	<select id="realtimeList9" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call MCLISOLIB.SEL02_CORONA19REALTIMESTSBYFIELD_MC600M_SP(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_FDT, 	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_TDT, 	mode=IN,  jdbcType=VARCHAR}
+			) 
+		]]>
+	</select>
+	
+	<!-- 코로나현황 : 코로나 주단위 건수 추이 (최근 일주일) -->
+	<select id="realtimeList10" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call MCLISOLIB.SEL02_CORONA19WEEKLYCNT_MC600M_SP(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+			)
+		]]>
+	</select>
+	
+	<!-- 코로나현황 : 코로나 양성률 (전일 보고) -->
+	<select id="realtimeList11" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call MCLISOLIB.SEL02_CORONA19POSRATE_MC600M_SP(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_FDT, 	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_TDT, 	mode=IN,  jdbcType=VARCHAR}
+			)  
+		]]>
+	</select>
+		
+</mapper>

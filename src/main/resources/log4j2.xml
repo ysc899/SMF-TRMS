@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<Configuration status="warn" name="MyApp" packages="">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %5p [%c{1}] %m%n" />
+        </Console>
+	    <RollingFile name="ROLLING_ERROR" fileName="/var/tomcat85/logs/error.log" filePattern="/var/tomcat85/logs/error/error.log.%d{yyyy-MM-dd}"
+	                 ignoreExceptions="false" append="true">
+          <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+	      <PatternLayout>
+        	<Pattern>%d %5p [%c] %m%n</Pattern>
+	      </PatternLayout>
+	        <Policies>           
+		      	<TimeBasedTriggeringPolicy  interval="1" modulate="true" />
+	        </Policies>
+	    </RollingFile>
+	    <RollingFile name="ROLLING_Sql" fileName="/var/tomcat85/logs/jdbc.sql.log" filePattern="/var/tomcat85/logs/sql/jdbc.sql.log.%d{yyyy-MM-dd}"
+	                 ignoreExceptions="false" append="true">
+	      <PatternLayout>
+	        <Pattern>%d %5p [%c{1}] %m%n</Pattern>
+	      </PatternLayout>
+	        <Policies>           
+		      	<TimeBasedTriggeringPolicy  interval="1" modulate="true" />
+	        </Policies>
+	    </RollingFile>
+	    <RollingFile name="ROLLING_LogDebug" fileName="/var/tomcat85/logs/LogDebug.log" filePattern="/var/tomcat85/logs/debug/LogDebug.log.%d{yyyy-MM-dd}"
+	                 ignoreExceptions="false" append="true">
+	      <PatternLayout>
+	        <Pattern>%d %5p [%c{1}] %m%n</Pattern>
+	      </PatternLayout>
+	        <Policies>           
+		      	<TimeBasedTriggeringPolicy  interval="1" modulate="false" />
+	        </Policies>
+	    </RollingFile>
+    </Appenders>
+    <Loggers>
+		
+		
+		<!-- log SQL with timing information, post execution -->
+		<!-- 
+		- jdbc.sqlonly :자바 코드에서 실행되는 모든 SQL 쿼리를 출력
+		- jdbc.sqltiming : SQL 실행 소요 시간에 대한 타이밍 통계를 포함하여 실행 후 SQL을 출력
+		- jdbc.audit : ResultSet 을 제외한 모든 jdbc 호출을 출력
+		- jdbc.resultset : ResultSet 객체에 대한 모든 메소드 호출이 기록되기 때문에 훨씬 더 방대한 양을 출력
+		- jdbc.connection: DB 커넥션의 세부사항을 출력
+		- jdbc.resultsettable : 데이터베이스 조회 결과를 테이블 형식을 출력
+		-->
+		<Logger name="jdbc.sqlonly" level="DEBUG" >
+            <AppenderRef ref="ROLLING_Sql"/>
+	        <AppenderRef ref="ROLLING_ERROR" level="DEBUG"/>
+		</Logger>
+		
+<!-- 		<Logger name="jdbc.resultsettable" level="INFO"> -->
+<!-- 		    <AppenderRef ref="ROLLING_LogDebug" /> -->
+<!-- 		</Logger> -->
+
+	    <Logger name="org.springframework"  additivity="false">
+	        <AppenderRef ref="console" level="ERROR"/>
+	        <AppenderRef ref="ROLLING_ERROR" level="ERROR"/>
+	    </Logger>
+	   
+	    <Logger name="kr.co.softtrain" level="DEBUG" additivity="false">
+            <AppenderRef ref="console"   />
+            <AppenderRef ref="ROLLING_LogDebug"  level="DEBUG" />
+	        <AppenderRef ref="ROLLING_ERROR" level="DEBUG"/>
+	    </Logger>
+		
+		
+        <Logger name="egovframework"  level="ERROR" additivity="false">
+            <AppenderRef ref="console"   />
+            <AppenderRef ref="ROLLING_LogDebug"  level="ERROR" />
+	        <AppenderRef ref="ROLLING_ERROR" level="ERROR"/>
+        </Logger>
+        <Root level="error">
+            <AppenderRef ref="console" />
+     		<AppenderRef ref="ROLLING_ERROR" />
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hospSmsPat">
+
+	<select id="hospSmsPatList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWC003MR(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_MSG,	mode=IN,	jdbcType=VARCHAR}
+                              )
+		]]>
+	</select>
+	
+	<insert id="hospSmsMsgSave" statementType="CALLABLE" parameterType="HashMap">
+        <![CDATA[
+        call WEBOBJLIB.MWC003MC(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_MSG,	mode=IN,	jdbcType=VARCHAR}
+                              ) 
+    ]]>	
+    </insert>
+    
+    
+    <insert id="hospSmsPatSave" statementType="CALLABLE" parameterType="HashMap">
+        <![CDATA[
+        call WEBOBJLIB.MWC003DC(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_SEQ,	mode=IN,	jdbcType=DECIMAL}
+							  , #{I_CHN,	mode=IN,	jdbcType=VARCHAR}
+                              ) 
+    ]]>	
+    </insert>
+    
+    
+    <select id="hospSmsPatDtlList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWC003DR(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_SEQ,	mode=IN,	jdbcType=VARCHAR}
+                              )
+		]]>
+	</select>
+	
+	
+	<delete id="hospSmsPatDel" statementType="CALLABLE" parameterType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWC003DD(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_CHN,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_SEQ,	mode=IN,	jdbcType=DECIMAL}
+                              ) 
+    ]]>
+    </delete>
+    
+    
+	<update id="hospSmsMsgUdt" statementType="CALLABLE" parameterType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWC003MU(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_SEQ,	mode=IN,	jdbcType=DECIMAL}
+							  , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_MSG,	mode=IN,	jdbcType=VARCHAR}
+                              ) 
+    ]]>
+    </update>
+    
+    <delete id="hospSmsMsgDel" statementType="CALLABLE" parameterType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWC003MD(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_SEQ,	mode=IN,	jdbcType=DECIMAL}
+                              ) 
+    ]]>
+    </delete>
+    
+    <select id="hospSmsPatChkSave" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWC003MCC(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              )
+		]]>
+	</select>
+	
+</mapper>

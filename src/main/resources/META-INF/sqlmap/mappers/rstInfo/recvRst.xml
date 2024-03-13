@@ -1,0 +1,1453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MCLISOLIB">
+
+	<select id="MCDWNCLS" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MCDWNCLS(
+								 #{IO_PARM0,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM1,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM2,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM3,		mode=INOUT,		jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	<select id="MCALLSAA2" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MCALLSAA2(
+								 #{IO_PARM0,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM1,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM2,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM3,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM4,		mode=INOUT,		jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	<select id="MC999RM" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MC999RM(
+								 #{IO_PARM0,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM1,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM2,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM3,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM4,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM5,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM6,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM7,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM8,		mode=INOUT,		jdbcType=DECIMAL}
+							  ) 
+	]]>
+	</select>
+	<select id="MCR003T11" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MCR003T11() 
+	]]>
+	</select>
+<!-- 		call WEBOBJLIB.MCR003T11( )  MWR003T11 -->
+	<select id="MCR003T12" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MCR003T12(
+								 #{IO_PARM0,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM1,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+								,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+								,#{IO_PARM4,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM5,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM6,		mode=INOUT,		jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	<!-- 20190410 프로시저 및 RPG 호출 관련 수정 -->
+	<select id="MWR003T11" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR003T11() 
+	]]>
+	</select>
+	<select id="MWR003RTR" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR003RTR(
+								 #{IO_PARM0,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM1,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+								,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+								,#{IO_PARM4,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM5,		mode=INOUT,		jdbcType=DECIMAL}
+								,#{IO_PARM6,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM7,		mode=INOUT,		jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	<select id="MWR003RTR8" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR003RTR8(
+								#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}	
+								,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}	
+								,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM5,		mode=INOUT,		jdbcType=DECIMAL}	
+								,#{IO_PARM6,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM7,		mode=INOUT,		jdbcType=DECIMAL}	
+							 ) 
+	]]>
+	</select>
+	<select id="MWR03RMT75" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR03RMT75(
+								 #{IO_PARM0,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM1,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+								,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+								,#{IO_PARM4,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM5,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM6,		mode=INOUT,		jdbcType=DECIMAL}
+								,#{IO_PARM7,		mode=INOUT,		jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	<select id="MWR03RMT76" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+			CALL  WEBOBJLIB.MWR03RMT76(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM8,		mode=INOUT,		jdbcType=CHAR}
+			)
+	]]>
+	</select>
+	
+
+	<select id="MWR003RMT8" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+			CALL  WEBOBJLIB.MWR003RMT8(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM8,		mode=INOUT,		jdbcType=CHAR}
+			)
+	]]>
+	</select>
+	
+	<select id="MWR003TM1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+			CALL  WEBOBJLIB.MWR003TM1(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=CHAR}
+			)
+	]]>
+	</select>
+
+	<select id="MWR003RTR1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+				CALL  WEBOBJLIB.MWR003RTR1(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM8,		mode=INOUT,		jdbcType=CHAR}
+				)
+	]]>
+	</select>
+	<select id="MWR003RTR9" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MWR003RTR9(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<!-- 20190410 프로시저 및 RPG 호출 관련 수정 -->
+	
+	
+	
+	<select id="MCR03RMT75" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MCR03RMT75(
+								 #{IO_PARM0,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM1,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+								,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+								,#{IO_PARM4,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM5,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM6,		mode=INOUT,		jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	<select id="MCR003RTR8" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MCR003RTR8(
+								#{IO_PARM0,			mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}	
+								,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}	
+								,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM5,		mode=INOUT,		jdbcType=DECIMAL}	
+								,#{IO_PARM6,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM7,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM8,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM9,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM10,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM11,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM12,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM13,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM14,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM15,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM16,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM17,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM18,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM19,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM20,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM21,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM22,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM23,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM24,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM25,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM26,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM27,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM28,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM29,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM30,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM31,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM32,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM33,		mode=INOUT,		jdbcType=DECIMAL}	
+								,#{IO_PARM34,		mode=INOUT,		jdbcType=CHAR}	
+
+							 ) 
+	]]>
+	</select>
+	<select id="MCR03RMS6" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MCR03RMS6(
+								#{IO_PARM0,			mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM2,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM3,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM4,		mode=INOUT,		jdbcType=DECIMAL}	
+								,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM6,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM7,		mode=INOUT,		jdbcType=DECIMAL}	
+							 ) 
+	]]>
+	</select>
+	<select id="MCR03RMS61" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MCR03RMS61(
+								#{IO_PARM0,			mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM2,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM3,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM4,		mode=INOUT,		jdbcType=DECIMAL}	
+								,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM6,		mode=INOUT,		jdbcType=DECIMAL}	
+								,#{IO_PARM7,		mode=INOUT,		jdbcType=CHAR}	
+								,#{IO_PARM8,		mode=INOUT,		jdbcType=DECIMAL}	
+							 ) 
+	]]>
+	</select>
+	<select id="MC308RMS4" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MC308RMS4(
+								#{IO_PARM0,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM1,  mode=INOUT,  jdbcType=DECIMAL}
+								,#{IO_PARM2,  mode=INOUT,  jdbcType=DECIMAL}
+								,#{IO_PARM3,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM4,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM5,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM6,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM7,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM8,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM9,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM10,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM11,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM12,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM13,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM14,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM15,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM16,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM17,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM18,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM19,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM20,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM21,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM22,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM23,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM24,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM25,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM26,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM27,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM28,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM29,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM30,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM31,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM32,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM33,  mode=INOUT,  jdbcType=CHAR}
+								,#{IO_PARM34,  mode=INOUT,  jdbcType=CHAR}	
+							 ) 
+	]]>
+	</select>
+	
+	<select id="MC105RMS1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MC105RMS1(
+								#{IO_PARM0,  	mode=INOUT,  		jdbcType=CHAR}
+								,#{IO_PARM1,  	mode=INOUT,  		jdbcType=DECIMAL}
+								,#{IO_PARM2,  	mode=INOUT,  		jdbcType=DECIMAL}
+								,#{IO_PARM3,  	mode=INOUT,  		jdbcType=CHAR}
+								,#{IO_PARM4,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM5,		mode=INOUT,		jdbcType=VARCHAR}
+								,#{IO_PARM6,		mode=INOUT,		jdbcType=DECIMAL}
+								,#{IO_PARM7,		mode=INOUT,		jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	<select id="MCR03RM2W" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL  WEBOBJLIB.MCR03RM2W(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=DECIMAL}
+		)
+	]]>
+	</select>
+
+
+	<select id="MC118RM" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+			CALL  WEBOBJLIB.MC118RM(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM8,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM9,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM10,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM11,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM12,		mode=INOUT,		jdbcType=CHAR}
+				)
+	]]>
+	</select>
+	<select id="MC118RMS1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+				CALL  WEBOBJLIB.MC118RMS1(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM8,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM9,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM10,		mode=INOUT,		jdbcType=CHAR}
+				)
+	]]>
+	</select>
+<!-- MCR003TM1   -  MWR003TM1 변경  -->
+	<select id="MCR003TM1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+			CALL  WEBOBJLIB.MCR003TM1(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=CHAR}
+			)
+	]]>
+	</select>
+
+
+	<select id="MCR003T13" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+				CALL  WEBOBJLIB.MCR003T13(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=CHAR}
+				)
+	]]>
+	</select>
+
+	<select id="MCR003RMT8" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+			CALL  WEBOBJLIB.MCR003RMT8(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=DECIMAL}
+			)
+	]]>
+	</select>
+
+	<select id="MCR003RMR" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+			CALL  WEBOBJLIB.MCR003RMR(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}
+			)
+	]]>
+	</select>
+
+	<select id="MCR003RMR8" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+			CALL  WEBOBJLIB.MCR003RMR8(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM8,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM9,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM10,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM11,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM12,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM13,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM14,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM15,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM16,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM17,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM18,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM19,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM20,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM21,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM22,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM23,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM24,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM25,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM26,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM27,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM28,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM29,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM30,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM31,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM32,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM33,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM34,		mode=INOUT,		jdbcType=CHAR}
+			)
+	]]>
+	</select>
+
+	<select id="MCR003RMS8" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+			CALL  WEBOBJLIB.MCR003RMS8(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=DECIMAL}
+			)
+	]]>
+	</select>
+	<select id="MCR03RMT76" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+			CALL  WEBOBJLIB.MCR03RMT76(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=CHAR}
+			)
+	]]>
+	</select>
+	
+	<select id="MC600RM6" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC600RM6(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC600RM3" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC600RM3(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM22, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM23, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM24, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM25, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM26, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC600RM2" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC600RM2(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM22, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM23, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM24, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM25, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC600RM1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC600RM1(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM22, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC356RM" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC356RM(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=DECIMAL}
+		)
+	]]>
+	</select>
+	<select id="MC352RMS2" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC352RMS2(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC352RMS1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC352RMS1(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC352RM" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC352RM(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=DECIMAL}
+		)
+	]]>
+	</select>
+	<select id="MC319RMS4" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC319RMS4(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC306RMS1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC306RMS1(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=DECIMAL}
+		)
+	]]>
+	</select>
+	<select id="MC181RM2" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC181RM2(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC177RM2" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC177RM2(
+				#{IO_PARM0, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC176RM" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC176RM(
+				#{IO_PARM0, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC107RMS2" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC107RMS2(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC107RM1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC107RM1(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC106RMS2" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC106RMS2(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=DECIMAL}
+		)
+	]]>
+	</select>
+	<select id="MC308RMS7" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC308RMS7(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM22, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM23, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM24, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM25, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM26, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM27, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM28, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM29, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM30, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM31, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM32, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM33, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM34, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC308RMS3" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC308RMS3(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCR03RMS91" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR03RMS91(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+		)
+	]]>
+	</select>
+	<select id="MCR03RMS76" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR03RMS76(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCR03RMS75" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR03RMS75(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=DECIMAL}
+		)
+	]]>
+	</select>
+	<select id="MCR03RMS71" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR03RMS71(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+		)
+	]]>
+	</select>
+	<select id="MCR03RMR5" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR03RMR5(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM22, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM23, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM24, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM25, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM26, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM27, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM28, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM29, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM30, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM31, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM32, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM33, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM34, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCR03RMR" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR03RMR(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCR03RM2" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR03RM2(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCR03RM" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR03RM(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCR003TM_" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR003TM_(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCR003RTR9" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR003RTR9(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM22, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM23, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM24, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM25, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM26, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM27, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM28, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM29, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM30, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM31, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM32, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM33, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM34, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCR003RMS9" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR003RMS9(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+		)
+	]]>
+	</select>
+	<select id="MCR003RMR9" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR003RMR9(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM22, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM23, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM24, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM25, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM26, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM27, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM28, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM29, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM30, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM31, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM32, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM33, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM34, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCR003RMR3" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR003RMR3(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM22, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM23, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM24, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM25, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM26, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM27, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM28, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM29, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM30, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM31, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM32, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM33, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM34, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM35, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC600RM7" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC600RM7(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCGETGNAM" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCGETGNAM(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCPATBAS" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCPATBAS(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCPATBAS1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCPATBAS1(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCPATATL" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCPATATL(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCR03RMS5" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR03RMS5(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=DECIMAL}
+		)
+	]]>
+	</select>
+	<select id="TC310RM" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.TC310RM(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC308RM3" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MC308RM3(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MC176RMS6" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+			CALL  WEBOBJLIB.MC176RMS6(
+					#{IO_PARM0,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM1,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM2,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM3,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM4,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM5,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM6,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM7,		mode=INOUT,		jdbcType=DECIMAL}
+					,#{IO_PARM8,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM9,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM10,		mode=INOUT,		jdbcType=CHAR}
+					,#{IO_PARM11,		mode=INOUT,		jdbcType=CHAR}
+			)
+	]]>
+	</select>
+	
+	<select id="MCR03RMR51" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCR03RMR51(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM22, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM23, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM24, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM25, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM26, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM27, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM28, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM29, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM30, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM31, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM32, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM33, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM34, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MCPATBAS2" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBOBJLIB.MCPATBAS2(
+				#{IO_PARM0, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM1, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM2, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM3, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM4, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM5, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM6, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM7, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM8, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM9, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM10, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM11, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM12, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM13, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM14, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM15, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM16, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM17, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM18, mode=INOUT,  jdbcType=CHAR}
+				,#{IO_PARM19, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM20, mode=INOUT,  jdbcType=DECIMAL}
+				,#{IO_PARM21, mode=INOUT,  jdbcType=CHAR}
+		)
+	]]>
+	</select>
+	<select id="MWR003TMX" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.SP_MWR003TMX(
+								#{IO_PARM0,			mode=IN,		jdbcType=CHAR}	
+								,#{IO_PARM1,		mode=IN,		jdbcType=CHAR}	
+								,#{IO_PARM2,		mode=IN,		jdbcType=DECIMAL}	
+								,#{IO_PARM3,		mode=IN,		jdbcType=DECIMAL}	
+								,#{IO_PARM4,		mode=IN,		jdbcType=CHAR}	
+								,#{IO_PARM5,		mode=IN,		jdbcType=DECIMAL}	
+								,#{IO_PARM6,		mode=IN,		jdbcType=CHAR}		
+								,#{IO_PARM7,		mode=IN,		jdbcType=CHAR}
+							 ) 
+	]]>
+	</select>
+
+	<!-- 메뉴 : 검사결과 받기 > 코로나 결과보고 (병원별 건수 목록) -->
+	<select id="recvReportCoronaHosCnt" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call MCLISOLIB.SEL04_CORONAREPORT_MC600M_RESULT_SP(#{I_COR, mode=IN, jdbcType=VARCHAR}
+														  , #{I_FDT, mode=IN, jdbcType=VARCHAR}
+														  , #{I_TDT, mode=IN, jdbcType=VARCHAR}
+														  , #{I_ID, mode=IN, jdbcType=VARCHAR}
+														  , #{I_HOS, mode=IN, jdbcType=VARCHAR}
+														  ) 
+	]]>
+	</select>
+	
+	<!-- 메뉴 : 검사결과 받기 > 코로나 결과보고 (환자목록) -->
+	<select id="recvReportCoronaHosResult" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call MCLISOLIB.SEL04_CORONAREPORT_MC600M_POSITIVE_CTVALUE_SP (#{I_COR, mode=IN, jdbcType=VARCHAR}
+																	  , #{I_FDT, mode=IN, jdbcType=VARCHAR}
+																	  , #{I_TDT, mode=IN, jdbcType=VARCHAR}
+																	  , #{I_ID,  mode=IN, jdbcType=VARCHAR}
+																	  , #{I_HOS, mode=IN, jdbcType=VARCHAR}
+																	  ) 
+	]]>
+	</select>
+	
+	<!-- 메뉴 : 검사결과 받기 > OCS 결과받기(B) 조회 -->
+	<select id="recvRstCorona" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call MCLISOLIB.SEL04_CORONAREPORT_MC600M_RESULT_OCS_SP(#{I_COR				, mode=IN, jdbcType=VARCHAR}
+															  , #{I_DGN				, mode=IN, jdbcType=VARCHAR}
+															  , #{I_FDT				, mode=IN, jdbcType=VARCHAR}
+															  , #{I_TDT				, mode=IN, jdbcType=VARCHAR}
+															  , #{I_ID				, mode=IN, jdbcType=VARCHAR}
+															  , #{I_HOS				, mode=IN, jdbcType=VARCHAR}
+															  , #{I_DOWN_YN			, mode=IN, jdbcType=VARCHAR}
+															  , #{I_CORONA_ASSEMBLE	, mode=IN, jdbcType=VARCHAR}
+															  , #{I_CORONA_RESULT	, mode=IN, jdbcType=CHAR}
+														  ) 
+	]]>
+	</select>
+	
+	<!-- 메뉴 : 검사결과 받기 > OCS 결과받기(B) 조회 후 다운 flag update -->
+	<update id="recvRstCorona_save" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call  MCLISOLIB.SEL04_CORONAREPORT_MC600M_RESULT_OCS_UPDATE_SP(#{I_COR, 	mode=IN, 	jdbcType=VARCHAR}
+																	  , #{DAT,	mode=IN,	jdbcType=VARCHAR}
+																	  , #{JNO,	mode=IN,	jdbcType=VARCHAR}
+																	  ) 
+	]]>
+	</update>
+</mapper>

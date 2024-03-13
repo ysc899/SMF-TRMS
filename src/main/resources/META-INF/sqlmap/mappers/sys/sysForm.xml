@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sysForm">
+     
+    <select id="sysFormList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+    <![CDATA[
+		call WEBOBJLIB.MWS011R(#{I_COR,		mode=IN,	jdbcType=VARCHAR}
+							  , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+							  , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+							  , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+							  , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_RFM,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RCL,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RTP,	mode=IN,	jdbcType=VARCHAR}
+							  ) 
+    ]]>
+    </select>
+    
+    <insert id="sysFormCheck" statementType="CALLABLE" parameterType="HashMap">
+        <![CDATA[
+        call WEBOBJLIB.MWS011CC(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_RFM,	mode=IN,	jdbcType=VARCHAR}
+                              ) 
+    ]]>	
+    </insert>
+    <insert id="sysFormSave" statementType="CALLABLE" parameterType="HashMap">
+        <![CDATA[
+        call WEBOBJLIB.MWS011C(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_RFM,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RCL,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RTP,	mode=IN,	jdbcType=VARCHAR}
+                              ) 
+    ]]>	
+    </insert>
+    
+    <update id="sysFormUdt" statementType="CALLABLE" parameterType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWS011U(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_RFM,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RCL,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RTP,	mode=IN,	jdbcType=VARCHAR}
+                              ) 
+    ]]>
+    </update>
+    
+    <delete id="sysFormDel" statementType="CALLABLE" parameterType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWS011D(#{I_COR,		mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_RFM,	mode=IN,	jdbcType=VARCHAR}
+                              ) 
+    ]]>
+    </delete>
+    
+</mapper>

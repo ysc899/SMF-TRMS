@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="login">
+	<select id="LoginCheck" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWL001R( #{I_UID,		mode=IN,  jdbcType=CHAR}
+							  , #{I_IP,			mode=IN,  jdbcType=CHAR}
+							  , #{O_MSGCOD,		mode=OUT, jdbcType=CHAR}
+							  , #{O_ERRCOD,		mode=OUT, jdbcType=CHAR}
+						 	  , #{I_UPWD,		mode=IN,  jdbcType=CHAR}
+						 	  , #{I_UPWD_SHA,   mode=IN,  jdbcType=VARCHAR}
+							  , #{O_COR,		mode=OUT, jdbcType=CHAR}
+							  , #{O_ECF,		mode=OUT, jdbcType=CHAR}
+							  , #{O_UID,		mode=OUT, jdbcType=VARCHAR}
+							  , #{O_NAM,		mode=OUT, jdbcType=CHAR}
+							  , #{O_HOS,		mode=OUT, jdbcType=CHAR}
+							  , #{O_AGR,		mode=OUT, jdbcType=CHAR}
+							  , #{O_CDT,		mode=OUT, jdbcType=DECIMAL}
+							  , #{O_CTM,		mode=OUT, jdbcType=DECIMAL}
+							  , #{O_IYN,		mode=OUT, jdbcType=CHAR}
+							  , #{O_SYN,		mode=OUT, jdbcType=CHAR}
+							  , #{O_TICKER,		mode=OUT, jdbcType=CHAR}
+							  , #{O_CHATBOT,	mode=OUT, jdbcType=CHAR}
+							  , #{O_MONITERVIEWPRINT,	mode=OUT, jdbcType=CHAR}
+							  , #{O_PAGUENHOSYN,	mode=OUT, jdbcType=CHAR}
+					)
+	</select>	
+	<update id="ChangePWD" statementType="CALLABLE" parameterType="HashMap">
+			call WEBOBJLIB.MWS005C4( 
+								#{I_COR,		mode=IN,		jdbcType=CHAR}
+								,#{I_UID,		mode=IN,		jdbcType=CHAR}
+								,#{I_IP,		mode=IN,		jdbcType=CHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=CHAR}
+							    ,#{O_ERRCOD,	mode=OUT, 		jdbcType=VARCHAR}
+								,#{I_LOGLID,	mode=IN,		jdbcType=CHAR}
+								,#{I_SPWD,		mode=IN,		jdbcType=CHAR}
+								,#{I_PWD,		mode=IN,		jdbcType=CHAR}
+								,#{I_SPWD_SHA,	mode=IN,		jdbcType=VARCHAR}
+								,#{I_PWD_SHA,	mode=IN,		jdbcType=VARCHAR}
+					)
+	</update>
+	<select id="FromHomepage" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWL001R2( 
+							    #{I_COR,		mode=IN,  jdbcType=CHAR}
+							  , #{I_UID,		mode=IN,  jdbcType=CHAR}
+							  , #{I_IP,			mode=IN,  jdbcType=CHAR}
+							  , #{O_MSGCOD,		mode=OUT, jdbcType=CHAR}
+							  , #{O_ERRCOD,		mode=OUT, jdbcType=CHAR}
+						 	  , #{I_HLK,		mode=IN,  jdbcType=CHAR}
+							  , #{O_COR,		mode=OUT, jdbcType=CHAR}
+							  , #{O_ECF,		mode=OUT, jdbcType=CHAR}
+							  , #{O_UID,		mode=OUT, jdbcType=VARCHAR}
+							  , #{O_NAM,		mode=OUT, jdbcType=CHAR}
+							  , #{O_HOS,		mode=OUT, jdbcType=CHAR}
+							  , #{O_AGR,		mode=OUT, jdbcType=CHAR}
+							  , #{O_CDT,		mode=OUT, jdbcType=DECIMAL}
+							  , #{O_CTM,		mode=OUT, jdbcType=DECIMAL}
+							  , #{O_IYN,		mode=OUT, jdbcType=CHAR}
+							  , #{O_SYN,		mode=OUT, jdbcType=CHAR}
+							  , #{O_TICKER,		mode=OUT, jdbcType=CHAR}
+							  , #{O_CHATBOT,	mode=OUT, jdbcType=CHAR}
+							  , #{O_MONITERVIEWPRINT, mode=OUT, jdbcType=CHAR}
+							  , #{O_PAGUENHOSYN,	mode=OUT, jdbcType=CHAR}
+					)
+	</select>
+	
+</mapper>

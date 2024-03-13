@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ocsUpload">
+
+	<select id="ocsUploadList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR002R1(
+								 #{I_COR,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{I_HOS,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_FDT,		mode=IN,		jdbcType=DECIMAL}
+								,#{I_TDT,		mode=IN,		jdbcType=DECIMAL}
+								,#{I_RCP,		mode=IN,		jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	<select id="ocsUploadDtl" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR002R2(
+								 #{I_COR,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{I_HOS,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_UPDT,		mode=IN,		jdbcType=DECIMAL}
+								,#{I_FSQ,		mode=IN,		jdbcType=DECIMAL}
+							  ) 
+	]]>
+	</select>
+	
+	<insert id="ocsUploadSaveM" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWR002C1( 
+						 #{I_COR,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+						,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+						,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+						,#{I_HOS,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_FPT,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_FNM,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_FSNM,		mode=IN,		jdbcType=VARCHAR}
+						,#{O_UPDT,		mode=OUT,		jdbcType=VARCHAR}
+						,#{O_FSQ,		mode=OUT,		jdbcType=VARCHAR}
+					)
+	</insert>
+
+	
+	<insert id="ocsUploadSaveD" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWR002C2( 
+						 #{I_COR,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+						,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+						,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+						,#{I_HOS,		mode=IN,		jdbcType=CHAR}
+						,#{I_UPDT,		mode=IN,		jdbcType=DECIMAL}
+						,#{I_FSQ,		mode=IN,		jdbcType=DECIMAL}
+						,#{I_RNO,		mode=IN,		jdbcType=DECIMAL}
+						,#{I_001,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_002,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_003,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_004,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_005,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_006,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_007,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_008,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_009,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_010,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_011,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_012,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_013,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_014,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_015,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_016,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_017,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_018,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_019,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_020,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_021,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_022,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_023,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_024,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_044,		mode=IN,		jdbcType=VARCHAR}
+						,#{I_045,		mode=IN,		jdbcType=VARCHAR}
+					)
+	</insert>
+	
+	<select id="ocsUploadCheck" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR002DC(#{I_COR,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{I_HOS,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_UPDT,		mode=IN,		jdbcType=DECIMAL}
+								,#{I_FSQ,		mode=IN,		jdbcType=DECIMAL}
+							  ) 
+	]]>
+	</select>
+	
+	<delete id="ocsUploadDel" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWR002D( 
+								#{I_COR,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{I_HOS,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_UPDT,		mode=IN,		jdbcType=DECIMAL}
+								,#{I_FSQ,		mode=IN,		jdbcType=DECIMAL}
+								,#{I_STS,		mode=IN,		jdbcType=VARCHAR}
+					)
+	</delete>
+</mapper>

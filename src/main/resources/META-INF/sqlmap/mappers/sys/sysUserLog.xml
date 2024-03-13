@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sysUserLog">
+	<insert id="sysUserLogSave" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWS004C( 
+								#{I_COR,		mode=IN,		jdbcType=CHAR}
+								,#{I_UID,		mode=IN,		jdbcType=CHAR}
+								,#{I_IP,		mode=IN,		jdbcType=CHAR}
+								,#{O_LOGMSGCOD,	mode=OUT,		jdbcType=CHAR}
+							    ,#{O_LOGERRCOD,	mode=OUT, 		jdbcType=VARCHAR}
+								,#{I_LOGNAM,	mode=IN,		jdbcType=CHAR}
+								,#{I_LOGMNU,	mode=IN,		jdbcType=CHAR}
+								,#{I_LOGMNM,	mode=IN,		jdbcType=CHAR}
+								,#{I_LOGEFG,	mode=IN,		jdbcType=CHAR}
+								,#{I_LOGSFL,	mode=IN,		jdbcType=CHAR}
+								,#{I_LOGURL,	mode=IN,		jdbcType=CHAR}
+								,#{I_LOGPAR,	mode=IN,		jdbcType=CHAR}
+								,#{I_LOGMSG,	mode=IN,		jdbcType=CHAR}
+					)
+	</insert>
+
+	<select id="sysUserLogList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS004R1(#{I_COR,			mode=IN,			jdbcType=CHAR}
+								,#{I_UID,		mode=IN,			jdbcType=CHAR}
+								,#{I_IP,		mode=IN,			jdbcType=CHAR}
+								,#{O_MSGCOD,	mode=OUT,			jdbcType=CHAR}
+							    ,#{O_ERRCOD,	mode=OUT, 			jdbcType=VARCHAR}
+								,#{I_FRDT,		mode=IN,			jdbcType=CHAR}
+								,#{I_TODT,		mode=IN,			jdbcType=CHAR}
+								,#{I_NAM,		mode=IN,			jdbcType=CHAR}
+								,#{I_MNM,		mode=IN,			jdbcType=CHAR}
+								,#{I_SFL,		mode=IN,			jdbcType=CHAR}
+								,#{I_EFG,		mode=IN,			jdbcType=CHAR}
+							  ) 
+	]]>
+	</select>
+	
+</mapper>

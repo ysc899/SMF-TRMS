@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="banking">
+	<select id="getBankingCmCodeSelect" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MO_BANKING_CM_CODE_SELECT(#{P_COR, mode=IN, jdbcType=CHAR}
+												  , #{P_CM_CODE1, mode=IN, jdbcType=VARCHAR}
+												  , #{P_CM_CODE2, mode=IN, jdbcType=VARCHAR}
+											  ) 
+	]]>
+	</select>
+	
+	<select id="getBankingSimpleList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MO_BANK_INSPECTION2_SIMPLE_LIST(#{P_COR, mode=IN, jdbcType=CHAR}
+												 	 , #{P_GCD, mode=IN, jdbcType=VARCHAR}
+											  ) 
+	]]>
+	</select>
+	
+	<!-- 뱅킹통계 -->
+	<select id="getBankingStatisticList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MO_BANK_RESULT_STATISTIC_LIST(#{P_COMPANY, mode=IN, jdbcType=CHAR}
+												 	 , #{P_GCDGRP, mode=IN, jdbcType=VARCHAR}
+												 	 , #{P_GCD, mode=IN, jdbcType=VARCHAR}
+												 	 , #{P_ACD, mode=IN, jdbcType=VARCHAR}
+												 	 , #{P_SPECIMEN_ID, mode=IN, jdbcType=VARCHAR}
+											  ) 
+	]]>
+	</select>
+	
+	<!-- 뱅킹통계(합계) -->
+	<select id="getBankingStatisticListSum" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MO_BANK_RESULT_STATISTIC_LIST_SUM(#{P_COMPANY, mode=IN, jdbcType=CHAR}
+												 	 	, #{P_GCDGRP, mode=IN, jdbcType=VARCHAR}
+												 	 	, #{P_GCD, mode=IN, jdbcType=VARCHAR}
+												 	 	, #{P_ACD, mode=IN, jdbcType=VARCHAR}
+												 	 	, #{P_SPECIMEN_ID, mode=IN, jdbcType=VARCHAR}
+											  ) 
+	]]>
+	</select>
+</mapper>

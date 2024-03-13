@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sysHelp">
+	
+	<resultMap id="rtn_hash_help" type="java.util.HashMap">
+	    <result property="S013MCD"  column="S013MCD"/>
+	    <result property="S001PMCD"  column="S001PMCD"/>
+	    <result property="S001MNM"  column="S001MNM"/>
+	    <result property="S001PMNM" column="S001PMNM"/>
+	    <result property="S013CON"  column="S013CON" javaType="java.lang.String"/>
+	    <result property="S013CUR"  column="S013CUR"/>
+	    <result property="S013CDT"  column="S013CDT"/>
+	 </resultMap>
+	 
+	<select id="sysHelpList" statementType="CALLABLE" parameterType="HashMap" resultMap="rtn_hash_help">
+	<![CDATA[
+		call WEBOBJLIB.MWS013R( 
+								#{I_COR, 		mode=IN,  		jdbcType=VARCHAR}
+							  , #{I_UID, 		mode=IN,  		jdbcType=VARCHAR}
+							  , #{I_IP, 		mode=IN,  		jdbcType=VARCHAR}
+							  ,	#{O_MSGCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							  , #{O_ERRCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							  , #{I_MCD, 		mode=IN,  		jdbcType=VARCHAR}
+							  , #{I_MNM, 		mode=IN,  		jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="sysHelpViewData" statementType="CALLABLE" parameterType="HashMap" resultMap="rtn_hash_help">
+	<![CDATA[
+		call WEBOBJLIB.MWS013R2( 
+								#{I_COR, 		mode=IN,  		jdbcType=VARCHAR}
+							  , #{I_UID, 		mode=IN,  		jdbcType=VARCHAR}
+							  , #{I_IP, 		mode=IN,  		jdbcType=VARCHAR}
+							  ,	#{O_MSGCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							  , #{O_ERRCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							  , #{I_MCD, 		mode=IN,  		jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	
+	
+	<select id="getDate" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS013DT( #{I_COR, 		mode=IN,  		jdbcType=VARCHAR}
+							  , #{I_UID, 		mode=IN,  		jdbcType=VARCHAR}
+							  , #{I_IP, 		mode=IN,  		jdbcType=VARCHAR}
+							  , #{O_MSGCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							  , #{O_ERRCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="sysHelpSaveCnt" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS013CC( #{I_COR, 		mode=IN,  		jdbcType=VARCHAR}
+							   , #{I_UID, 		mode=IN,  		jdbcType=VARCHAR}
+							   , #{I_IP, 		mode=IN,  		jdbcType=VARCHAR}
+							   , #{O_MSGCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							   , #{O_ERRCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							   , #{I_MCD, 		mode=IN,  		jdbcType=VARCHAR}
+							   ) 
+	]]>
+	</select>
+	<!-- 
+	<update id="sysHelpUpdate" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS013U( #{I_COR, 		mode=IN, 		jdbcType=VARCHAR}
+							  , #{I_UID, 		mode=IN, 		jdbcType=VARCHAR}
+							  , #{I_IP, 		mode=IN, 		jdbcType=VARCHAR}
+							  , #{O_MSGCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							  , #{O_ERRCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							  , #{I_MCD, 		mode=IN, 		jdbcType=VARCHAR}
+							  , #{I_CON, 		mode=IN, 		jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</update>
+	 -->
+	<insert id="sysHelpSave" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS013C( #{I_COR, 		mode=IN, 		jdbcType=VARCHAR}
+							  , #{I_UID, 		mode=IN, 		jdbcType=VARCHAR}
+							  , #{I_IP, 		mode=IN, 		jdbcType=VARCHAR}
+							  , #{O_MSGCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							  , #{O_ERRCOD, 	mode=OUT, 		jdbcType=VARCHAR}
+							  , #{I_MCD, 		mode=IN, 		jdbcType=VARCHAR}
+							  , #{I_CON, 		mode=IN, 		jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</insert>
+	
+	<delete id="sysHelpDelete" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWS013D( 
+								 #{I_COR, 		mode=IN, 		jdbcType=VARCHAR}
+								,#{I_UID,  		mode=IN, 		jdbcType=VARCHAR}
+                                ,#{I_IP,   		mode=IN, 		jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{I_MCD, 		mode=IN, 		jdbcType=VARCHAR}
+							   )
+	</delete>
+	 
+	 
+</mapper>

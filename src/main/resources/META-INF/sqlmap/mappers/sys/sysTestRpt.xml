@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sysTestRpt">
+     
+    <select id="sysTestRptList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+    <![CDATA[
+		call WEBOBJLIB.MWS018R(#{I_COR,		mode=IN,	jdbcType=VARCHAR}
+							  , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+							  , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+							  , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+							  , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_RCL,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RTP,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RFM,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_FKN,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_STS,	mode=IN,	jdbcType=VARCHAR}
+							  ) 
+    ]]>
+    </select>
+    
+    <insert id="sysTestRptSave" statementType="CALLABLE" parameterType="HashMap">
+        <![CDATA[
+        call WEBOBJLIB.MWS018C(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_TIT,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RGN,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_SYN,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RFN,	mode=IN,	jdbcType=VARCHAR}
+                              ) 
+    ]]>	
+    </insert>
+</mapper>

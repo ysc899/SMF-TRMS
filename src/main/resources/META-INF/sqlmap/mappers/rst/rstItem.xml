@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rstItem">
+	
+	<select id="rstItemList_corona" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWW104RMW(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DGN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_FDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_TDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_NAM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_CHN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ETC, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN1, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN2, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN3, mode=IN, jdbcType=VARCHAR}
+							  , #{I_HAK, mode=IN, jdbcType=VARCHAR}
+							  , #{I_STS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_GAD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ECF, mode=IN, jdbcType=VARCHAR}
+							  , #{I_HOS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ICNT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_ROW, mode=IN, jdbcType=DECIMAL}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="rstItemList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWW104RMW2(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DGN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_FDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_TDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_NAM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_CHN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ETC, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN1, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN2, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN3, mode=IN, jdbcType=VARCHAR}
+							  , #{I_HAK, mode=IN, jdbcType=VARCHAR}
+							  , #{I_STS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_GAD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ECF, mode=IN, jdbcType=VARCHAR}
+							  , #{I_HOS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ICNT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_ROW, mode=IN, jdbcType=DECIMAL}
+							  ) 
+	]]>
+	</select>
+	
+	
+	
+	<insert id="rstUserSMSSend" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.SUREDATAC( #{I_COR, mode=IN, jdbcType=VARCHAR}
+							    , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							    , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							    , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							    , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							    , #{SENDNAM, mode=IN, jdbcType=VARCHAR}
+							    , #{SENDHPN, mode=IN, jdbcType=VARCHAR}
+							    , #{C001HPN, mode=IN, jdbcType=VARCHAR}
+							    , #{C002MSG, mode=IN, jdbcType=VARCHAR}
+							    , #{NAM, mode=IN, jdbcType=VARCHAR}
+							    ) 
+							    
+	]]>
+	</insert>
+</mapper>
+
+

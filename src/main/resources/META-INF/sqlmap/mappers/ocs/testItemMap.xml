@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="testItemMap">
+
+	<select id="testItemMapList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWT002R(
+					#{I_COR,		mode=IN,		jdbcType=VARCHAR}
+					,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+					,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+					,#{O_MSGCOD,	mode=OUT,		jdbcType=CHAR}
+					,#{O_ERRCOD,	mode=OUT,		jdbcType=CHAR}
+					,#{I_TCD,		mode=IN,		jdbcType=VARCHAR}
+					,#{I_GAD,		mode=IN,		jdbcType=VARCHAR}
+					,#{I_HOS,		mode=IN,		jdbcType=VARCHAR}
+			) 
+	]]>
+	</select>
+</mapper>

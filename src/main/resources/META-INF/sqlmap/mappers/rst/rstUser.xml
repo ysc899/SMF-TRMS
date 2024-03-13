@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rstUser">
+	
+	<!-- N폼/P폼 종합소견&질환별소견 가져오기 위함 -->
+	<resultMap id="test" type="java.util.HashMap">
+		<result property="F680TXT" column="F680TXT" jdbcType="CLOB" javaType="java.lang.String"/>
+	 </resultMap>
+
+	<!-- 기존 쿼리 이용 -->
+	<!-- 
+	<select id="rstUserList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWW178RM2(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DGN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_FDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_TDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_NAM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN1, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN2, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN3, mode=IN, jdbcType=VARCHAR}
+							  , #{I_HAK, mode=IN, jdbcType=VARCHAR}
+							  , #{I_STS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PCHN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PETC, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PJKNF, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PJKN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PECF, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PHOS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PINQ, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ICNT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_ROW, mode=IN, jdbcType=DECIMAL}
+							  ) 
+	]]>
+	</select>
+	 -->
+	<!-- RPG 사용 변경 20190507
+	    1. WEBOBJLIB.MWW178RM2에서 WEBOBJLIB.MWW178RM2R 로 변경
+		2. 추가 파라미터 
+		   , #{I_IGBN, mode=IN, jdbcType=VARCHAR}
+		  , #{I_IDAT, mode=IN, jdbcType=VARCHAR}
+		  , #{I_IJNO, mode=IN, jdbcType=VARCHAR}
+	--> 
+	<select id="rstUserList_corona" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWW178RM2P(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DGN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_FDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_TDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_NAM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN1, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN2, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN3, mode=IN, jdbcType=VARCHAR}
+							  , #{I_HAK, mode=IN, jdbcType=VARCHAR}
+							  , #{I_STS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PCHN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PETC, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PJKNF, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PJKN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PECF, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PHOS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PINQ, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IGBN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IDAT, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IJNO, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ICNT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_ROW, mode=IN, jdbcType=DECIMAL}
+							  , #{I_CORONA, mode=IN, jdbcType=VARCHAR}
+							  , #{I_BIRTH, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	 
+	<!-- 2022.01.03 - 보건소만 코로나 조회를 위해 23~30년 바코드 조회되도록 예외처리 -->
+	<select id="rstUserList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWW178RM3R(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DGN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_FDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_TDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_NAM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN1, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN2, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN3, mode=IN, jdbcType=VARCHAR}
+							  , #{I_HAK, mode=IN, jdbcType=VARCHAR}
+							  , #{I_STS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PCHN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PETC, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PJKNF, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PJKN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PECF, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PHOS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PINQ, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IGBN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IDAT, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IJNO, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ICNT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_ROW, mode=IN, jdbcType=DECIMAL}
+							  , #{I_CORONA, mode=IN, jdbcType=VARCHAR}
+							  , #{I_BIRTH, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	 
+	<!-- 
+		, #{I_PNN, mode=IN, jdbcType=VARCHAR}
+	  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+	  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+	   -->	
+	<select id="rstUserDtl" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWW104RM0(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{I_RGN1, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN2, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN3, mode=IN, jdbcType=VARCHAR}
+							  , #{I_HAK, mode=IN, jdbcType=VARCHAR}
+							  , #{I_SAB, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="rstUserDtl2" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWW104RM1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{I_RGN1, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN2, mode=IN, jdbcType=VARCHAR}
+							  , #{I_RGN3, mode=IN, jdbcType=VARCHAR}
+							  , #{I_HAK, mode=IN, jdbcType=VARCHAR}
+							  , #{I_SAB, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PNN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ICNT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_GCD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ACD, mode=IN, jdbcType=VARCHAR}
+							  , #{O_DPTJ, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_SEC, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_AGE, mode=OUT, jdbcType=DECIMAL}
+							  , #{O_NAM, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_JN, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_HOSN, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_HOS, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_YN, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_DPTA, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_DPTN, mode=OUT, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="rstUserMw109rms" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW109RMS(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{O_BDT, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_LPD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_GW1, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_GW2, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_RSK, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_DWN, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_EDW, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_NTD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_RMK1, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_RMK2, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_AFP, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_AFPM, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_HCG, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_HCGM, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_UE3, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_UE3M, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_INH, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_INHM, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_FBG, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_FBGM, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_PPA, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_PPAM, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_NT, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_NTM, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_RC, mode=OUT, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<!-- D폼 혈종 종합소견 가져오기 -->
+	<!-- BOB폼 산전 종합소견 가져오기 -->
+	<select id="rstUserMw108rm" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW108RM(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{I_RBN, mode=IN, jdbcType=VARCHAR}
+							  , #{O_REMK, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_CNT, mode=OUT, jdbcType=DECIMAL}
+							  , #{O_RC, mode=OUT, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="rstUserMwr03rms5" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR03RMS5(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{I_GCD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ACD, mode=IN, jdbcType=VARCHAR}
+							  , #{O_URL, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_CNT, mode=OUT, jdbcType=DECIMAL}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="rstUserMw118rms1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW118RMS1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="rstUserMw119rm" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW119RM(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							 , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							 , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							 , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							 , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							 , #{I_GAC, mode=IN, jdbcType=VARCHAR}
+							 , #{I_DT, mode=IN, jdbcType=DECIMAL}
+							 , #{O_GEAD, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_CNT, mode=OUT, jdbcType=DECIMAL}
+							 , #{O_RST, mode=OUT, jdbcType=VARCHAR}
+							 
+							 ) 
+	]]>
+	</select>
+	
+	<select id="rstUserMw118rm" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW118RM(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							 , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							 , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							 , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							 , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							 , #{I_GCT1, mode=IN, jdbcType=VARCHAR}
+							 , #{I_GCT2, mode=IN, jdbcType=VARCHAR}
+							 , #{I_GAC1, mode=IN, jdbcType=VARCHAR}
+							 , #{I_GAC2, mode=IN, jdbcType=VARCHAR}
+							 , #{I_BDT1, mode=IN, jdbcType=VARCHAR}
+							 , #{I_BDT2, mode=IN, jdbcType=VARCHAR}
+							 , #{O_HEAD, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_CNT, mode=OUT, jdbcType=DECIMAL}
+							 , #{O_RST, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_RECHK, mode=OUT, jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	
+	
+	<select id="rstUserMw106rm3" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW106RM3(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							 , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							 , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							 , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							 , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							 , #{I_HAK, mode=IN, jdbcType=VARCHAR}
+							 , #{O_TXT, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_LEN, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_CNT, mode=OUT, jdbcType=DECIMAL}
+							 , #{O_ERR, mode=OUT, jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	
+	<select id="rstUserMw106rms6" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW106RMS6(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							 , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							 , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							 , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							 , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							 , #{O_TXT, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_LEN, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_CNT, mode=OUT, jdbcType=DECIMAL}
+							 , #{O_ERR, mode=OUT, jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	
+	<select id="rstUserMw105rms1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW105RMS1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							 , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							 , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							 , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							 , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							 , #{I_HAK, mode=IN, jdbcType=VARCHAR}
+							 , #{O_TXT, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_LEN, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_CNT, mode=OUT, jdbcType=DECIMAL}
+							 , #{O_ERR, mode=OUT, jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	
+	<select id="rstUserMw106rms1" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW106RMS1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							 , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							 , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							 , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							 , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							 , #{O_TXT, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_CNT, mode=OUT, jdbcType=DECIMAL}
+							 , #{O_ERR, mode=OUT, jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	
+	<select id="rstUserMw106rms5" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW106RMS5(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							 , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							 , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							 , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							 , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							 , #{O_TXT, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_LEN, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_CNT, mode=OUT, jdbcType=DECIMAL}
+							 , #{O_ERR, mode=OUT, jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	
+	
+	<select id="rstUserMw117rm" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW117RM(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							 , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							 , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							 , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							 , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							 , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							 , #{O_BRS, mode=OUT, jdbcType=DECIMAL}
+							 , #{O_CCN, mode=OUT, jdbcType=DECIMAL}
+							 , #{O_CAN, mode=OUT, jdbcType=DECIMAL}
+							 , #{O_KAP, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_JPG, mode=OUT, jdbcType=DECIMAL}
+							 , #{O_RMK, mode=OUT, jdbcType=VARCHAR}
+							 , #{O_PRC, mode=OUT, jdbcType=VARCHAR}
+							 ) 
+	]]>
+	</select>
+	
+	
+	<!-- isRemark -->
+	<select id="rstUserMw107rms3" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MW107RMS3(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{O_TXT, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_LEN, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_CNT, mode=OUT, jdbcType=DECIMAL}
+							  , #{O_ERR, mode=OUT, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="testReq01List" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR001R4(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_FDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_TDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_STS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_NAM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_CHN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_HOS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="testReq02List" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR001R2(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="addReq01List" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR001A1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{I_HOS, mode=IN, jdbcType=VARCHAR}
+							  )
+	]]>
+	</select>
+	
+	<insert id="addReq01gridSave" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR001DC1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{F010GCD, mode=IN, jdbcType=VARCHAR}
+							  , #{F010TCD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_REJ, mode=IN, jdbcType=VARCHAR}
+							  , #{I_STS, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</insert>
+	
+	<update id="addReq01gridUpdate" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR001MU1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{I_R001PGY, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001TRM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001WRD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001CLT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_R001GDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_R001GKD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001OPN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001STS, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</update>
+	
+	<update id="addReq01gridInsert" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR001MC1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{I_R001HOS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001HNM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001CHN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001NAM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001JMN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001AGE, mode=IN, jdbcType=DECIMAL}
+							  , #{I_R001SEX, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001PGY, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001DTC, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001TRM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001WRD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001CLT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_R001GDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_R001GKD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001OPN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_R001STS, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</update>
+	
+	
+	
+	<select id="addReq02List" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR001A2(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{I_HOS, mode=IN, jdbcType=VARCHAR}
+							  )
+	]]>
+	</select>
+	
+	<!-- 추가검사 이력 데이터 조회 -->
+	<select id="addReq01grid" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR001G1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_HOS, mode=IN, jdbcType=VARCHAR}
+							  )
+	]]>
+	</select>
+	
+	<!-- 오더의뢰지 리스트 조회 -->
+	<select id="orderReqList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MRIMGMPR1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{I_HOS, mode=IN, jdbcType=VARCHAR}
+							    ) 
+	]]>
+	</select>
+	
+	<insert id="orderReqSave" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR004MC1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_HOS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{I_PAH, mode=IN, jdbcType=VARCHAR}
+							  , #{I_CNT, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ETC1, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ETC2, mode=IN, jdbcType=VARCHAR}
+							    ) 
+	]]>
+	</insert>
+
+	<select id="rstUser03List" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWC001MR1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_CHN, mode=IN, jdbcType=VARCHAR}
+							    ) 
+	]]>
+	</select>	
+	
+	<select id="redTxtList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWR003MR(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  )
+	]]>
+	</select>
+	
+	<!-- 조회 - 수진자별결과조회 (코로나 CT 결과) -->
+	<select id="coronaCtVal" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		call MCLISOLIB.NCOVCTR(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  )
+	]]>
+	</select>
+	
+	<!-- 조회 :: 결과지출력시 리포트파일(mrd) 지정되어 있는지 확인. -->
+	<select id="mrdCheckRst" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MRDCHECKR(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_GCD, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MRD_CHEKER, mode=OUT, jdbcType=VARCHAR}
+							  )
+	]]>
+	</select>
+
+	<!-- N폼/P폼 혈종 종합소견 & 질환별소견 가져오기 -->  
+	<!-- <select id="SEL06_RESULTMGMTAI_SG680D_SP" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap"> -->
+	<select id="SEL06_RESULTMGMTAI_SG680D_SP" statementType="CALLABLE" parameterType="HashMap"  resultMap="test">
+	<![CDATA[
+		call WEBOBJLIB.SEL06_RESULTMGMTAI_SG680D_SP(#{I_COR, mode=IN, jdbcType=VARCHAR}
+												  , #{I_RBN, mode=IN, jdbcType=VARCHAR}
+												  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+												  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  					) 
+	]]>
+	</select>
+	
+	
+	<!-- 조회 - 수진자별결과조회 (세포유전 결과) : 2022.08.29 -->
+	<select id="cellVal" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		call MCLISOLIB.SEL_FISHHOMEPAGE_RESULTTEXT_SGFIRH_SP(#{I_COR, mode=IN, jdbcType=VARCHAR}
+															  , #{I_DAT, mode=IN, jdbcType=DECIMAL}
+															  , #{I_JNO, mode=IN, jdbcType=DECIMAL}
+							  								)
+	]]>
+	</select>		
+</mapper>
+
+

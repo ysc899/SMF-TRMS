@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sysImgMng">
+     
+    <select id="sysImgMngList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+    <![CDATA[
+		call WEBOBJLIB.MWS012R1(#{I_COR,		mode=IN,	jdbcType=VARCHAR}
+							  , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+							  , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+							  , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+							  , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_PCD,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_FNM,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_MBC,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_NAM,	mode=IN,	jdbcType=VARCHAR}
+							  ) 
+    ]]>
+    </select>
+    <select id="sysImgMngDtl" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWS012R2(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RCL,	mode=IN,	jdbcType=VARCHAR}
+                              ) 
+    ]]>
+    </select>
+    
+    <insert id="sysImgMngSave" statementType="CALLABLE" parameterType="HashMap">
+        <![CDATA[
+        call WEBOBJLIB.MWS012C(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RCL,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_NSQ,	mode=IN,	jdbcType=DECIMAL}
+                              , #{I_NCL,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_NDV,	mode=IN,	jdbcType=VARCHAR}
+                              ) 
+    ]]>	
+    </insert>
+    
+    <update id="sysImgMngUdt" statementType="CALLABLE" parameterType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWS012U(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RCL,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_NSQ,	mode=IN,	jdbcType=DECIMAL}
+                              , #{I_NCL,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_NDV,	mode=IN,	jdbcType=VARCHAR}
+                              ) 
+    ]]>
+    </update>
+    
+    <delete id="sysImgMngDel" statementType="CALLABLE" parameterType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWS012D(#{I_COR,		mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RCL,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_NSQ,	mode=IN,	jdbcType=DECIMAL}
+                              ) 
+    ]]>
+    </delete>
+    
+</mapper>

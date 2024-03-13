@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rstGroupReport">
+
+	<select id="rstGroupReportList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWGRPRPT(#{I_PARAM,	mode=IN,	jdbcType=VARCHAR}
+									      , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+			                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+			                              , #{I_REPORT_LANGUAGE, mode=IN, jdbcType=VARCHAR}                                                                                                                    
+            )
+		]]>
+	</select>
+	
+	<!-- 메뉴 : 검사결과 받기 > 이미지 결과 받기 (선택받기) -->
+	<select id="rstGroupReportList2" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWGRPRPT2(#{I_PARAM,	mode=IN,	jdbcType=VARCHAR}
+									      , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+			                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}                                                                                                                    
+          	)
+		]]>
+	</select>
+	
+	<!-- 메뉴 : 검사결과 받기 > 이미지 결과 받기 (전체받기, 수신 받지 않은 결과 받기) -->
+	<select id="rstIMGGroupReportList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWIMGGRPRPT(#{I_COR,		mode=IN,	jdbcType=VARCHAR}
+									      , #{I_HOS,		mode=IN,	jdbcType=VARCHAR}
+									      , #{I_TERM_DIV,	mode=IN,	jdbcType=VARCHAR}
+									      , #{I_FDT,		mode=IN,	jdbcType=VARCHAR}
+									      , #{I_TDT,		mode=IN,	jdbcType=VARCHAR}
+									      , #{I_RECV_YN,	mode=IN,	jdbcType=VARCHAR}
+									      , #{I_UID,		mode=IN,	jdbcType=VARCHAR}
+			                              , #{I_IP,			mode=IN,	jdbcType=VARCHAR}                                                                                                                    
+           	)
+		]]>
+	</select>
+	
+	<!-- 
+	<select id="rstGroupReportList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWGRPRPT(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+						      , #{I_DAT,	mode=IN,	jdbcType=VARCHAR}    
+						      , #{I_JNO,	mode=IN,	jdbcType=VARCHAR}    
+						      , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}    
+						      , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}                                                                                                                    
+                              )
+		]]>
+	</select>
+	 -->
+	
+	<!-- 환자정보/꼬리말 조회(국문) -->
+	<select id="getPatientInfoKor" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.SW300PG2T(#{I_COR,		mode=IN,	jdbcType=VARCHAR}
+									  , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+									  , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+									  , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+									  , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+									  , #{I_DAT,	mode=IN,	jdbcType=DECIMAL}
+									  , #{I_JNO,	mode=IN,	jdbcType=DECIMAL}
+									  , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}
+									  , #{I_FOM,	mode=IN,	jdbcType=VARCHAR}
+									  , #{I_TMP,	mode=IN,	jdbcType=VARCHAR}
+									  , #{I_WTR,	mode=IN,	jdbcType=VARCHAR}
+			)
+		]]>
+	</select>
+	
+	<!-- 환자정보/꼬리말 조회(영문) -->
+	<select id="getPatientInfoEng" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.SW300PG2TE(#{I_COR,		mode=IN,	jdbcType=VARCHAR}
+									  , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+									  , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+									  , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+									  , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+									  , #{I_DAT,	mode=IN,	jdbcType=DECIMAL}
+									  , #{I_JNO,	mode=IN,	jdbcType=DECIMAL}
+									  , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}
+									  , #{I_FOM,	mode=IN,	jdbcType=VARCHAR}
+									  , #{I_TMP,	mode=IN,	jdbcType=VARCHAR}
+									  , #{I_WTR,	mode=IN,	jdbcType=VARCHAR}
+			)
+		]]>
+	</select>
+	
+	<!-- 검사결과(국문/영문) -->
+	<select id="getCovid19Result" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.SW300PG2D(#{I_COR,		mode=IN,	jdbcType=VARCHAR}
+									  , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+									  , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+									  , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+									  , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+									  , #{I_DAT,	mode=IN,	jdbcType=DECIMAL}
+									  , #{I_JNO,	mode=IN,	jdbcType=DECIMAL}
+									  , #{I_GCD,	mode=IN,	jdbcType=VARCHAR}
+									  , #{I_FOM,	mode=IN,	jdbcType=VARCHAR}
+									  , #{I_WTR,	mode=IN,	jdbcType=VARCHAR}
+			)
+		]]>
+	</select>
+
+	<!-- SMS Link to result Image report view and QR code Reading -->
+	<select id="rstGroupCoronaResult" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.SEL_CORONA_RESULT_IMG_SERCH_QR(#{I_HOS,	mode=IN,	jdbcType=VARCHAR}
+														, #{I_DAT,	mode=IN,	jdbcType=VARCHAR}
+														, #{I_JNO,	mode=IN,	jdbcType=VARCHAR}
+			)
+		]]>
+	</select>
+
+</mapper>

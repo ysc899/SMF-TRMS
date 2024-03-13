@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        	   http://www.springframework.org/schema/tx 
+        	   http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- SqlSession setup for MyBatis Database Layer -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean" >
+		<property name="dataSource" ref="ds-one" />
+		<!-- 
+		<property name="configLocation" value="classpath:/META-INF/sqlmap/config/sql-mybatis-config.xml" />
+		 -->
+		<property name="mapperLocations" value="classpath*:/META-INF/sqlmap/mappers/**/*.xml" />
+	</bean>
+		
+	<!-- MapperConfigurer setup for MyBatis Database Layer with @Mapper("deptMapper") in DeptMapper Interface -->	
+ 	<bean id="dsOneScanner" class="egovframework.rte.psl.dataaccess.mapper.MapperConfigurer">
+		<property name="basePackage" value="egovframework.sample" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSession"/>
+	</bean>  
+
+	<!-- 트랜젝션설정 Spring에서 관리 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds-one" />
+	</bean>
+    
+    <!-- 트랜젝션Spring 자동관리 필요설정 -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- //DataBase -->
+
+
+	<!-- 차세대 Db용 설정 -->
+
+
+	<!-- SqlSession setup for MyBatis Database Layer -->
+	<bean id="sqlSessionChaDb" class="org.mybatis.spring.SqlSessionFactoryBean" >
+		<property name="dataSource" ref="ds-chadb" />
+		<!--
+		<property name="configLocation" value="classpath:/META-INF/sqlmap/config/sql-mybatis-config.xml" />
+		 -->
+		<property name="mapperLocations" value="classpath*:/META-INF/sqlmap/mappers/**/*.xml" />
+	</bean>
+	<!-- 트랜젝션설정 Spring에서 관리 -->
+	<bean id="transactionManagerChaDb" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds-chadb" />
+	</bean>
+</beans>

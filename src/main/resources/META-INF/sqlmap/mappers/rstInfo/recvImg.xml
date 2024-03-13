@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="recvImg">
+
+	<select id="recvImgList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MCI008TR(
+								 #{I_COR,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{I_TERM_DIV,	mode=IN,		jdbcType=VARCHAR}
+								,#{I_FDT,		mode=IN,		jdbcType=DECIMAL}
+								,#{I_TDT,		mode=IN,		jdbcType=DECIMAL}
+								,#{I_HOS,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_RECV,		mode=IN,		jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	<select id="MWW03T12" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWW03T12(
+								 #{I_COR,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_FDT,		mode=IN,		jdbcType=DECIMAL}
+								,#{I_HOS,		mode=IN,		jdbcType=VARCHAR}
+								,#{I_RECV,		mode=IN,		jdbcType=VARCHAR}
+								,#{O_CNT,		mode=OUT,		jdbcType=DECIMAL}
+								,#{O_ERR,		mode=OUT,		jdbcType=VARCHAR}
+								,#{I_TDT,		mode=IN,		jdbcType=DECIMAL}
+								,#{I_TERM_DIV,	mode=IN,		jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+</mapper>

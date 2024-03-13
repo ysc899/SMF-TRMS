@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rstPre">
+	
+	<!-- 이전결과 -->
+	<select id="rstPreList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MW178RM7(#{I_COR,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+                              , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+                              , #{I_DGN,	mode=IN,	jdbcType=DECIMAL}
+                              , #{I_FDT,	mode=IN,	jdbcType=DECIMAL}
+                              , #{I_TDT,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_HOS,	mode=IN,	jdbcType=DECIMAL}
+                              , #{I_BDT,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_CHN,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_NAM,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RGN1,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RGN2,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_RGN3,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_HAK,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_STS,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_ETC,	mode=IN,	jdbcType=VARCHAR}
+                              , #{I_GAD,	mode=IN,	jdbcType=CHAR}
+                              , #{I_ECF,	mode=IN,	jdbcType=VARCHAR}
+						      , #{O_DAT,	mode=OUT,	jdbcType=VARCHAR}                                                                                                                        
+                              )
+		]]>
+	</select>
+</mapper>

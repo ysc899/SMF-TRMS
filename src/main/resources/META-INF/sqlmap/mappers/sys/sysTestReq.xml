@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sysTestReq">
+	
+	<update id="sysTestReqSave2" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call  WEBOBJLIB.MWR001U2(#{I_COR, 	mode=IN, 	jdbcType=VARCHAR}
+							  , #{I_UID, 	mode=IN, 	jdbcType=VARCHAR}
+							  , #{I_IP, 	mode=IN, 	jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, 	jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, 	jdbcType=VARCHAR}
+							  , #{I_DAT,	mode=IN,	jdbcType=DECIMAL}
+							  , #{I_JNO,	mode=IN,	jdbcType=DECIMAL}
+							  , #{I_GCD,	mode=IN,	jdbcType=CHAR}
+							  , #{I_STS,	mode=IN,	jdbcType=VARCHAR}
+							  , #{I_TCD,	mode=IN,	jdbcType=VARCHAR}
+							  , #{I_REJ,	mode=IN,	jdbcType=VARCHAR}
+							  , #{I_SSU,	mode=IN,	jdbcType=DECIMAL}
+							  , #{I_BSU,	mode=IN,	jdbcType=DECIMAL}
+						 	  , #{I_JSU,	mode=IN,	jdbcType=DECIMAL}
+						 	  , #{I_ASU,	mode=IN,	jdbcType=DECIMAL}
+							  , #{I_BCC,	mode=IN,	jdbcType=CHAR}
+							  , #{I_CSU,	mode=IN,	jdbcType=DECIMAL}
+							  , #{I_CCR,	mode=IN,	jdbcType=DECIMAL}
+							  ) 
+	]]>
+	</update>
+    <select id="sysTestReqCheck" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+    <![CDATA[
+		call WEBOBJLIB.MWR001CC(#{I_COR,		mode=IN,	jdbcType=VARCHAR}
+							  , #{I_UID,	mode=IN,	jdbcType=VARCHAR}
+							  , #{I_IP,		mode=IN,	jdbcType=VARCHAR}
+							  , #{O_MSGCOD,	mode=OUT,	jdbcType=VARCHAR}
+							  , #{O_ERRCOD,	mode=OUT,	jdbcType=VARCHAR}
+							  , #{I_DAT,	mode=IN,	jdbcType=DECIMAL}
+							  , #{I_JNO,	mode=IN,	jdbcType=DECIMAL}
+							  , #{I_GCD,	mode=IN,	jdbcType=CHAR}
+							  ) 
+    ]]>
+    </select>
+    <select id="sysTestReqMC185RM" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+    <![CDATA[
+		call WEBOBJLIB.MC185RM( 
+							   #{I_DAT,	mode=IN,	jdbcType=DECIMAL}
+							 , #{I_JNO,	mode=IN,	jdbcType=DECIMAL}
+							 , #{I_GCD,	mode=IN,	jdbcType=CHAR}
+							 , #{O_SSU,	mode=OUT,	jdbcType=DECIMAL}
+							 , #{O_BSU,	mode=OUT,	jdbcType=DECIMAL}
+							 , #{O_JSU,	mode=OUT,	jdbcType=DECIMAL}
+							 , #{O_ASU,	mode=OUT,	jdbcType=DECIMAL}
+							 , #{O_DCR,	mode=OUT,	jdbcType=DECIMAL}
+							 , #{O_BCC,	mode=OUT,	jdbcType=CHAR}
+							 , #{O_ERR,	mode=OUT,	jdbcType=CHAR}
+							 , #{I_COR,	mode=IN,	jdbcType=CHAR}
+							 , #{O_CSU,	mode=OUT,	jdbcType=DECIMAL}
+							 , #{O_CCR,	mode=OUT,	jdbcType=DECIMAL}
+							  ) 
+    ]]>
+    </select>
+</mapper>

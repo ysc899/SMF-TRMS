@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="chatbot">
+	<select id="loginCheck" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWL001R2_CHATBOT_LOGIN_CHECK(
+									 #{I_UID, mode=IN, jdbcType=VARCHAR}
+		                          	,#{I_HCK, mode=IN, jdbcType=VARCHAR}
+									,#{O_LOGIN_CHECK, mode=OUT, jdbcType=CHAR}
+									,#{O_HOS_NM, mode=OUT, jdbcType=VARCHAR}
+									,#{O_HOS_GIC, mode=OUT, jdbcType=VARCHAR}
+									,#{O_HOS_DRN, mode=OUT, jdbcType=VARCHAR}
+									,#{O_HOS_TEL, mode=OUT, jdbcType=VARCHAR}
+									,#{O_HOS_HCD, mode=OUT, jdbcType=VARCHAR}
+									,#{O_HOS_DPT, mode=OUT, jdbcType=VARCHAR}
+									,#{O_HOS_DPT_NM, mode=OUT, jdbcType=VARCHAR}
+									,#{O_HOS_CVL, mode=OUT, jdbcType=VARCHAR}
+									,#{O_HOS_CVL_NM, mode=OUT, jdbcType=VARCHAR}
+		)
+	]]>
+	</select>
+	
+</mapper>
