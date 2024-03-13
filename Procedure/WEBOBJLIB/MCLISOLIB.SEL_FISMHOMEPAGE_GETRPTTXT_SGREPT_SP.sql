@@ -1,0 +1,80 @@
+--  Generate SQL 
+--  Version:                   V7R2M0 140418 
+--  Generated on:              22/10/14 11:23:04 
+--  Relational Database:       NEODIN 
+--  Standards Option:          DB2 for i 
+--DROP SPECIFIC PROCEDURE MCLISOLIB.SEL_FISMHOMEPAGE_GETRPTTXT_SGREPT_SP ; 
+--SET PATH "QSYS","QSYS2","SYSPROC","SYSIBMADM","NEO030" ; 
+CREATE OR REPLACE PROCEDURE MCLISOLIB.SEL_FISMHOMEPAGE_GETRPTTXT_SGREPT_SP ( 
+  IN $P_COR CHAR(3) , 
+  IN $P_DAT DECIMAL(8, 0) , 
+  IN $P_JNO DECIMAL(7, 0) , 
+  IN $P_GCD CHAR(5) , 
+  IN $P_SDB VARCHAR(10) ) 
+  DYNAMIC RESULT SETS 1 
+  LANGUAGE SQL 
+  SPECIFIC MCLISOLIB.SEL_FISMHOMEPAGE_GETRPTTXT_SGREPT_SP 
+  NOT DETERMINISTIC 
+  MODIFIES SQL DATA 
+  CALLED ON NULL INPUT 
+  SET OPTION  ALWBLK = *ALLREAD , 
+  ALWCPYDTA = *OPTIMIZE , 
+  COMMIT = *NONE , 
+  DBGVIEW = *SOURCE , 
+  DECRESULT = (31, 31, 00) , 
+  DFTRDBCOL = *NONE , 
+  DLYPRP = *NO , 
+  DYNDFTCOL = *NO , 
+  DYNUSRPRF = *USER , 
+  SRTSEQ = *HEX 
+  BEGIN 
+	DECLARE CUR CURSOR FOR 
+/* 
+SELECT 
+TRIM ( SUBSTR ( REPLACE ( REPLACE ( FRPTTXT1 , CHR ( 10 ) , '|' ) , CHR ( 13 ) , '|' ) , 1 , INSTR ( REPLACE ( REPLACE ( FRPTTXT1 , CHR ( 10 ) , '|' ) , CHR ( 13 ) , '|' ) , '||' , 1 , 1 ) - 1 ) ) AS RLT1 
+, TRIM ( REPLACE ( SUBSTR ( SUBSTR ( REPLACE ( REPLACE ( FRPTTXT1 , CHR ( 10 ) , '|' ) , CHR ( 13 ) , '|' ) , ( INSTR ( REPLACE ( REPLACE ( FRPTTXT1 , CHR ( 10 ) , '|' ) , CHR ( 13 ) , '|' ) , '||' ) + 1 ) ) , 1 , INSTR ( SUBSTR ( REPLACE ( REPLACE ( FRPTTXT1 , CHR ( 10 ) , '|' ) , CHR ( 13 ) , '|' ) , ( INSTR ( REPLACE ( REPLACE ( FRPTTXT1 , CHR ( 10 ) , '|' ) , CHR ( 13 ) , '|' ) , '||' ) + 1 ) ) , '||' , 1 , 1 ) - 1 ) , '|' , '' ) ) AS RLT2 
+, TRIM ( REPLACE ( SUBSTR ( SUBSTR ( REPLACE ( REPLACE ( FRPTTXT1 , CHR ( 10 ) , '|' ) , CHR ( 13 ) , '|' ) , ( INSTR ( REPLACE ( REPLACE ( FRPTTXT1 , CHR ( 10 ) , '|' ) , CHR ( 13 ) , '|' ) , '||' ) + 1 ) ) , ( INSTR ( SUBSTR ( REPLACE ( REPLACE ( FRPTTXT1 , CHR ( 10 ) , '|' ) , CHR ( 13 ) , '|' ) , ( INSTR ( REPLACE ( REPLACE ( FRPTTXT1 , CHR ( 10 ) , '|' ) , CHR ( 13 ) , '|' ) , '||' ) + 1 ) ) , '||' ) + 1 ) ) , '|' , '' ) ) AS RLT3 
+, TRIM ( FRPTTXT2 ) AS RLT4 
+, TRIM ( FRPTTXT3 ) AS RLT5 
+, TRIM ( FRPTTXT4 ) AS RLT6 
+, TRIM ( FRPTTXT5 ) AS RLT7 
+, TRIM ( FRPTTXT6 ) AS RLT8 
+, TRIM ( FRPTTXT7 ) AS RLT9 
+, TRIM ( FRPTTXT8 ) AS RLT10 
+FROM MCLISDLIB . SGREPT@ 
+WHERE FRPTCOR = 'NML' 
+AND FRPTDAT = $P_DAT 
+AND FRPTJNO = $P_JNO 
+AND FRPTGCD = $P_GCD 
+; 
+*/ 
+SELECT 
+SUBSTRING ( FRPTTXT1 , 0 , LOCATE ( X'25' , FRPTTXT1 ) ) AS TXT1  -- (1)텍스트 
+--, replace(FRPTTXT1, SUBSTRING(FRPTTXT1, 0, LOCATE (X'25'||X'25', FRPTTXT1) + 2), '') 
+, RTRIM ( LTRIM ( SUBSTRING ( REPLACE ( FRPTTXT1 , SUBSTRING ( FRPTTXT1 , 0 , LOCATE ( X'25' , FRPTTXT1 ) + 2 ) , '' ) 
+		,	0  -- 시작위치(고정) 
+		, LOCATE ( X'25' , REPLACE ( FRPTTXT1 , SUBSTRING ( FRPTTXT1 , 0 , LOCATE ( X'25' , FRPTTXT1 ) + 2 ) , '' ) ) 
+		 
+) , X'25' ) , X'25' ) AS TXT2 
+, RTRIM ( LTRIM ( REPLACE (	REPLACE ( FRPTTXT1 , SUBSTRING ( FRPTTXT1 , 0 , LOCATE ( X'25' , FRPTTXT1 ) + 2 ) , '' ) 
+			, SUBSTRING ( REPLACE ( FRPTTXT1 , SUBSTRING ( FRPTTXT1 , 0 , LOCATE ( X'25' , FRPTTXT1 ) + 2 ) , '' ) 
+						,	0  -- 시작위치(고정) 
+						, LOCATE ( X'25' , REPLACE ( FRPTTXT1 , SUBSTRING ( FRPTTXT1 , 0 , LOCATE ( X'25' , FRPTTXT1 ) + 2 ) , '' ) )	+ 2  -- 2: 엔터2개위치) 
+						) 
+			, '' 
+) , X'25' ) , X'25' ) AS TXT3  -- 1,2번 문자 뺀 나머지 TEXT, R/TRIM 으로 양쪽 엔터 제거함 
+----,FRPTTXT1 
+, FRPTTXT2 
+, FRPTTXT3 
+, FRPTTXT4 
+, FRPTTXT5 
+, FRPTTXT6 
+FROM MCLISDLIB . SGREPT@ 
+WHERE FRPTCOR = 'NML' 
+AND FRPTDAT = $P_DAT 
+AND FRPTJNO = $P_JNO 
+AND FRPTGCD = $P_GCD 
+; 
+OPEN CUR ; 
+SET RESULT SETS CURSOR CUR ; 
+END  ; 

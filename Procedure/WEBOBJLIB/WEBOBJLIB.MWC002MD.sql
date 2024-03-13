@@ -1,0 +1,31 @@
+DROP PROCEDURE WEBOBJLIB.MWC002MD;
+
+CREATE PROCEDURE WEBOBJLIB.MWC002MD
+(
+	  IN I_COR 		VARCHAR(3) 		-- COR
+	, IN I_UID 		VARCHAR(12) 	-- 사용자 ID
+	, IN I_IP		VARCHAR(30)		-- 로그인 IP
+	, OUT O_MSGCOD	VARCHAR(3)		-- 메세지 코드
+	, OUT O_ERRCOD	VARCHAR(10)		-- 에러 코드
+	, IN I_HOS		CHAR(5)			-- 병원코드
+	, IN I_SEQ		DECIMAL			-- 메시지 순번
+)
+BEGIN
+	-- SMS 메시지 관리, SMS 메시지 삭제
+	SET O_MSGCOD = '200';
+	SET O_ERRCOD = '';
+ 
+	UPDATE WEBDBLIB.MWC002M@
+	SET
+		 C002NAM = ''		-- 메시지 명
+		,C002MSG = ''		-- 메시지
+		,C002DYN = 'Y'
+		,C002DUR = I_UID		-- 삭제자 ID
+		,C002DDT = TO_CHAR(CURRENT_TIMESTAMP, 'YYYYMMDD')		-- 삭제일자
+		,C002DTM = TO_CHAR(CURRENT_TIMESTAMP, 'hh24miss')		-- 삭제시간
+		,C002DIP = I_IP		-- 삭제자 IP
+	WHERE 
+		 C002COR = I_COR
+		 AND C002HOS = I_HOS
+		 AND C002SEQ = I_SEQ;
+END

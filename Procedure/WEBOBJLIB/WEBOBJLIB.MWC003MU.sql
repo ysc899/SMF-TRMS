@@ -1,0 +1,32 @@
+DROP PROCEDURE WEBOBJLIB.MWC003MU;
+
+CREATE  PROCEDURE WEBOBJLIB.MWC003MU
+(
+	  IN I_COR 		VARCHAR(3) 		-- 회사 코드
+	, IN I_UID 		VARCHAR(12) 	-- 사용자 ID
+	, IN I_IP		VARCHAR(30)		-- 로그인 IP
+	, OUT O_MSGCOD	VARCHAR(3)		-- 메세지 코드
+	, OUT O_ERRCOD	VARCHAR(10)		-- 에러 코드
+	, IN I_HOS		CHAR(5)			-- 병원 코드
+	, IN I_SEQ		DECIMAL(10, 0)	-- 메시지 순번
+	, IN I_GCD		CHAR(5)			-- 검사 항목 코드
+	, IN I_MSG		VARCHAR(4000)	-- 메시지
+)
+BEGIN
+	-- SMS 연동 관리, 메시지 수정
+	SET O_MSGCOD = '200';
+	SET O_ERRCOD = '';
+ 
+	UPDATE WEBDBLIB.MWC003M@
+	SET
+		 C003MSG = I_MSG		-- 메시지
+		,C003UUR = I_UID		-- 수정자 ID
+		,C003UDT = TO_CHAR(CURRENT_TIMESTAMP, 'YYYYMMDD')		-- 수정일자
+		,C003UTM = TO_CHAR(CURRENT_TIMESTAMP, 'hh24miss')		-- 수정시간
+		,C003UIP = I_IP		-- 수정자 IP
+	WHERE 
+		 C003COR = I_COR
+		 AND C003HOS = I_HOS
+		 AND C003SEQ = I_SEQ
+		 AND C003GCD = I_GCD;
+END

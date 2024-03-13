@@ -1,0 +1,33 @@
+DROP PROCEDURE WEBOBJLIB.MWR001CC;
+
+
+CREATE PROCEDURE WEBOBJLIB.MWR001CC
+(
+	  IN  I_COR 	VARCHAR(3) 	-- COR
+	, IN  I_UID 	VARCHAR(12) -- 사용자 ID
+	, IN  I_IP	  	VARCHAR(30)	-- 로그인 IP
+	, OUT O_MSGCOD	VARCHAR(3)	-- 메세지 코드
+	, OUT O_ERRCOD	VARCHAR(10)	-- 에러 코드
+	, IN   I_DAT    DECIMAL(8,0)  --접수일자
+	, IN   I_JNO    DECIMAL(5,0)   --접수번호
+	, IN   I_GCD    CHAR(5)   	--검사코드
+)BEGIN
+	-- 폼별 결과 양식 관리 중복확인
+	DECLARE V_CNT DECIMAL(5,0);	--  수량 확인
+		SELECT COUNT(*) 
+		INTO V_CNT
+		FROM WEBDBLIB.MWR001D@
+		WHERE R001COR = 'NML'	--COR
+		AND R001DAT =I_DAT	--접수일자
+		AND R001JNO = I_JNO	--접수번호
+		AND R001STS != 'STANDBY'	--접수번호
+		AND (I_GCD = '' OR R001GCD = I_GCD)
+		;
+
+   IF V_CNT >0 THEN
+	SET O_MSGCOD = '261';
+   ELSE
+	SET O_MSGCOD = '200';
+   END IF;
+
+END

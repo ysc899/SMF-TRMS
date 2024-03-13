@@ -1,0 +1,48 @@
+DROP PROCEDURE WEBOBJLIB.MWS011C;
+
+
+CREATE PROCEDURE WEBOBJLIB.MWS011C
+(
+	  IN  I_COR 	VARCHAR(3) 	-- COR
+	, IN  I_UID 	VARCHAR(12) -- 사용자 ID
+	, IN  I_IP	  	VARCHAR(30)	-- 로그인 IP
+	, OUT O_MSGCOD	VARCHAR(3)	-- 메세지 코드
+	, OUT O_ERRCOD	VARCHAR(10)	-- 에러 코드
+	, IN  I_RFM		VARCHAR(20)	  -- 폼
+	, IN  I_RCL		VARCHAR(20)	 -- 양식지
+	, IN  I_RTP		VARCHAR(20)	  -- 결과지 타입
+)
+BEGIN
+	-- 폼별 결과 양식 관리 등록
+
+	SET O_MSGCOD	=	'200';
+	SET O_ERRCOD	=	'';
+	INSERT INTO  WEBDBLIB.MWS011M@(
+		S011COR
+		,S011RFM
+		,S011RCL
+		,S011RTP
+		,S011CUR
+		,S011CDT
+		,S011CTM
+		,S011CIP
+		,S011UUR
+		,S011UDT
+		,S011UTM
+		,S011UIP
+	)
+	VALUES(
+		I_COR
+		, I_RFM
+		, I_RCL
+		, I_RTP
+		, I_UID
+		, TO_CHAR(CURRENT_TIMESTAMP, 'YYYYMMDD')	-- 등록일자
+		, TO_CHAR(CURRENT_TIMESTAMP, 'hh24miss') 	-- 등록시간
+		, I_IP
+		, ''
+		, 0
+		, 0
+		, ''
+	);
+END

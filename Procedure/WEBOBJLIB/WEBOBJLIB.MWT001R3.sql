@@ -1,0 +1,37 @@
+DROP PROCEDURE WEBOBJLIB.MWT001R3;
+
+-- 홍보 홈페이지 관리자 > 검사항목 등록할 때, 등록 가능한 검사항목 LIST 불러오기
+CREATE OR REPLACE PROCEDURE WEBOBJLIB.MWT001R3
+(
+      IN I_COR      VARCHAR(3)		-- COR
+    , IN I_UID      VARCHAR(12)		-- 사용자 ID
+    , IN I_IP       VARCHAR(30)		-- 로그인 IP
+    , OUT O_MSGCOD  VARCHAR(3)		-- 메세지 코드
+    , OUT O_ERRCOD  VARCHAR(10)		-- 에러 코드
+)
+LANGUAGE SQL
+DYNAMIC RESULT SETS 1
+BEGIN
+    DECLARE CUR1  CURSOR WITH RETURN FOR
+	
+    	SELECT F010GCD		--검사코드
+    			, F010FKN	--검사명(국문)
+    			, F010FEN	--검사명(영문)
+		FROM MCLISDLIB.MC010M@
+		WHERE F010COR = I_COR
+		AND F010GCD NOT IN (
+								SELECT F010GCD FROM MCLISDLIB.MC010M@ AA, WEBDBLIB.MWT001M@ BB
+								WHERE 1=1
+								AND AA.F010COR = BB.T001COR
+								AND AA.F010GCD = BB.T001TCD 
+								AND AA.F010COR = I_COR
+								AND AA.F010STS = 'Y'	--사용여부
+								AND AA.F010ACH = 'Y'	--웹여부
+							)
+		AND F010STS = 'Y'	--사용여부
+		AND F010ACH = 'Y'	--웹여부
+		ORDER BY F010GCD;
+
+	SET O_MSGCOD = '200';
+	OPEN CUR1;
+END

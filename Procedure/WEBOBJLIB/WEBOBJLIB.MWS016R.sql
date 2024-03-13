@@ -1,0 +1,58 @@
+DROP PROCEDURE WEBOBJLIB.MWS016R;
+
+CREATE PROCEDURE WEBOBJLIB.MWS016R
+(
+	IN I_COR 		VARCHAR(3) 	-- COR
+	, IN I_UID 		VARCHAR(12) -- 사용자 ID
+	, IN I_IP		VARCHAR(30)	-- 로그인 IP
+	, OUT O_MSGCOD	CHAR(3)		-- 메세지 코드
+	, OUT O_ERRCOD	CHAR(10)	-- 에러 코드
+	, IN I_EKD 		VARCHAR(20) -- 이메일종류
+	, OUT O_TIT 	VARCHAR(1000)	-- 제목
+	, OUT O_HED		VARCHAR(10000)	-- 헤더
+	, OUT O_FOT		VARCHAR(10000)	-- 풋터
+	, OUT O_FNM		VARCHAR(1000)	-- 송신 이메일 주소
+	, OUT O_FSNM	VARCHAR(1000)	-- 송신자 명
+)
+BEGIN
+	--메일 템플릿 조회
+	DECLARE V_CNT DECIMAL(5,0);	-- 사용자 아이디
+
+	SET O_TIT		=  '';
+	SET O_HED		=  '';
+	SET O_FOT		=  '';
+	SET O_FNM		=  '';
+	SET O_FSNM		=  '';
+	SET O_MSGCOD	=  '';
+	SET O_ERRCOD	=  '';
+
+    --  메일 템플릿 조회
+	SELECT COUNT(*)
+	INTO V_CNT 
+	FROM  WEBDBLIB.MWS016M@
+	WHERE  S016COR  = I_COR
+	AND  S016EKD  = I_EKD;
+
+	IF V_CNT > 0 THEN  
+
+	    --  메일 템플릿 조회
+		SELECT
+			 TRIM(S016TIT) S016TIT		-- 제목
+			,  TRIM(S016HED)S016HED		-- 헤더
+			,  TRIM(S016FOT)S016FOT		-- 풋터
+			,  TRIM(S016FNM)S016FNM		-- 송신 이메일 주소
+			,  TRIM(S016FSNM)S016FSNM		-- 송신자 명
+			INTO O_TIT
+				, O_HED
+				, O_FOT
+				, O_FNM
+				, O_FSNM
+		FROM  WEBDBLIB.MWS016M@
+		WHERE  S016COR  = I_COR
+		AND  S016EKD  = I_EKD
+		ORDER BY S016TIT ;
+
+	END IF;
+	SET O_MSGCOD = '200';
+END
+
