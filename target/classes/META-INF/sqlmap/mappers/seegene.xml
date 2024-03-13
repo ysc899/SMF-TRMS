@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="seegene">
+	
+	<select id="designGetMenuList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		SELECT CASE WHEN (SELECT S001PMCD FROM WEBSRCLIB.MWS001M@ WHERE S001MCD = A.S001PMCD) = '' THEN CONCAT(CONCAT(S001PMCD, '.'), S001MCD)
+				ELSE CONCAT(CONCAT((SELECT S001PMCD FROM WEBSRCLIB."MWS001M@" WHERE S001MCD = A.S001PMCD),'.'),CONCAT(CONCAT(S001PMCD,'.'),S001MCD))
+				END TREE
+				, A.S001MCD
+				, A.S001PMCD
+				, A.S001MNM
+				, A.S001PTH
+				, A.S001ICN
+		FROM WEBSRCLIB."MWS001M@" A
+		WHERE S001MCD != 'ROOT'
+		START WITH A.S001PMCD = ''
+		CONNECT BY PRIOR A.S001MCD = A.S001PMCD
+		ORDER SIBLINGS BY CAST(S001SEQ AS INT)
+	]]>
+	</select>
+		
+	<select id="userLogSearch" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS004R(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{I_FRDT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_TODT, mode=IN, jdbcType=DECIMAL}
+							  , #{I_NAM, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	
+	<select id="getMenuTreeList" parameterType="HashMap" resultType="HashMap">
+		SELECT CASE WHEN (SELECT S001MPMCD FROM WEBSRCLIB."MWS001M@" WHERE S001MMCD = A.S001MPMCD) = '' THEN CONCAT(CONCAT(S001MPMCD,'.'),S001MMCD)
+				ELSE CONCAT(CONCAT((SELECT S001MPMCD FROM WEBSRCLIB."MWS001M@" WHERE S001MMCD = A.S001MPMCD),'.'),CONCAT(CONCAT(S001MPMCD,'.'),S001MMCD))
+				END tree   
+			  , S001MMMN AS menuname
+			  , 0 as icon
+		FROM WEBSRCLIB."MWS001M@" A
+		WHERE S001MCLS != 'T' 
+		START WITH S001MPMCD = ''
+		CONNECT BY PRIOR S001MMCD = S001MPMCD
+		ORDER SIBLINGS BY CAST(S001MSEQ AS INT)
+	</select>
+	
+	
+	
+	
+	<select id="ejtest" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.MWL001R(#{I_USRID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_USRPWD, mode=IN, jdbcType=VARCHAR}
+							  , #{O_ERRORCD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERROR, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_EHTYPE, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_USRNM, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_LOGHOS, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_HOSNM, mode=OUT, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<parameterMap id="procMap" type="HashMap">
+	    <parameter property="s1" mode="IN" jdbcType="VARCHAR" javaType="java.lang.String" />
+	    <parameter property="s2" mode="OUT" jdbcType="VARCHAR" javaType="String" />
+	</parameterMap>
+
+	<select id="c" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.@ZTSTRPC(#{s2, mode=INOUT, jdbcType=VARCHAR}, #{s3, mode=INOUT, jdbcType=DECIMAL}) 
+	]]>
+	</select>
+	
+	<select id="test16" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.@ZZZREP(#{s1, mode=INOUT, jdbcType=VARCHAR}, #{s2, mode=INOUT, jdbcType=VARCHAR}) 
+		
+	]]>
+	</select>
+	
+	<select id="test17" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap" >
+	<![CDATA[
+		call WEBSRCLIB.TSTRSTSET(#{s1, mode=INOUT, jdbcType=VARCHAR}
+							 , #{s2, mode=INOUT, jdbcType=VARCHAR}
+							 , #{s3, mode=INOUT, jdbcType=DECIMAL}) 
+		
+	]]>
+	</select>
+	
+	<select id="test18" statementType="CALLABLE" parameterType="HashMap" >
+	<![CDATA[
+		call WEBSRCLIB.TSTRSTSET(#{s1, mode=INOUT, jdbcType=VARCHAR}
+							 , #{s2, mode=INOUT, jdbcType=VARCHAR}
+							 , #{s3, mode=INOUT, jdbcType=DECIMAL}) 
+	]]>
+	</select>
+	
+	<select id="r" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.@ZTSTRPR(#{s1, mode=INOUT, jdbcType=DECIMAL}
+							  , #{s2, mode=INOUT, jdbcType=DECIMAL}
+							  , #{s3, mode=INOUT, jdbcType=DECIMAL}
+							  , #{s4, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s5, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s6, mode=INOUT, jdbcType=VARCHAR}
+							  ) 
+		
+	]]>
+	</select>
+	
+	
+	<select id="r2" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.MCW178RM2(#{s1, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s2, mode=INOUT, jdbcType=DECIMAL}
+							  , #{s3, mode=INOUT, jdbcType=DECIMAL}
+							  , #{s4, mode=INOUT, jdbcType=DECIMAL}
+							  , #{s5, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s6, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s7, mode=INOUT, jdbcType=DECIMAL}
+							  , #{s8, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s9, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s10, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s11, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s12, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s13, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s14, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s15, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s16, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s17, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s18, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s19, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s20, mode=INOUT, jdbcType=VARCHAR}
+							  , #{s21, mode=INOUT, jdbcType=DECIMAL}
+							  , #{s22, mode=INOUT, jdbcType=VARCHAR}
+							  ) 
+		
+	]]>
+	</select>
+	
+	<select id="u" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.@ZTSTRPU(#{s1, mode=INOUT, jdbcType=DECIMAL}, #{s2, mode=INOUT, jdbcType=VARCHAR}, #{s3, mode=INOUT, jdbcType=DECIMAL}) 
+	]]>
+	</select>
+	
+	<select id="d" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.@ZTSTRPD(#{s1, mode=INOUT, jdbcType=DECIMAL}) 
+		
+	]]>
+	</select>
+	
+	<select id="test" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.WEBTEST2P(#{s1, mode=INOUT, jdbcType=DECIMAL}, #{s2, mode=INOUT, jdbcType=VARCHAR}) 
+		
+	]]>
+	</select>
+	
+	<select id="test2" statementType="CALLABLE" parameterType="HashMap">
+		call WEBSRCLIB.WEBTEST2P(#{s1, mode=INOUT, jdbcType=NUMERIC}, #{s2, mode=INOUT, jdbcType=VARCHAR})
+	</select>
+	
+	
+	<select id="loginCheck1" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.MCALLHOMEP(#{s1, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s2, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s3, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s4, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s5, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s6, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s7, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s8, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s9, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s10, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s11, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s12, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s13, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s14, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s15, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s16, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s17, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s18, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s19, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s20, mode=INOUT, jdbcType=VARCHAR}
+		   					    ) 
+		
+	]]>
+	</select>
+	
+	<select id="test3" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.MW107RM1P(#{s1, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s2, mode=INOUT, jdbcType=DECIMAL}
+							   , #{s3, mode=INOUT, jdbcType=DECIMAL}
+							   , #{s4, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s5, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s6, mode=INOUT, jdbcType=VARCHAR}
+							   , #{s7, mode=INOUT, jdbcType=DECIMAL}
+							   , #{s8, mode=INOUT, jdbcType=VARCHAR}
+		   					    ) 
+		
+	]]>
+	</select>
+	
+	
+	
+	<select id="test14" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.TEST4(#{s1, mode=INOUT, jdbcType=DECIMAL}, #{s2, mode=INOUT, jdbcType=VARCHAR}) 
+		
+	]]>
+	</select>
+	
+	<select id="test13" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBSRCLIB.TESTSPROC2(#{s1, mode=IN, jdbcType=INTEGER}, #{s2, mode=OUT, jdbcType=VARCHAR}) 
+		
+	]]>
+	</select>
+	
+	
+	
+	
+	<select id="test10" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		CALL MCLISOLIB.MC107RM1('NMR',X'020171124F',X'22490F','','',#{s1},X'000F','')
+	]]>
+	</select>
+	
+	<select id="test8" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		CALL MCLISOLIB.MC107RM1('NMR',X'020171124F',X'22490F','','',#{s1},X'000F','')
+	]]>
+	</select>
+	
+	<select id="test7" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL MCLISOLIB.MC107RM1('NMR',X'020171124F',X'22490F',#{s1},#{s2},#{s3},X'000F',#{s4})
+	]]>
+	</select>
+	
+	<select id="test6" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBSRCLIB.MC107RM1('NML',X'020171124F',X'22490F',' ',' ',' ',X'000F',' ')
+	]]>
+	</select>
+	
+	<select id="test9" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL MCLISOLIB.MC107RM1('NMR',X'020171124F',X'22490F','','','',X'000F','')
+	]]>
+	</select>
+	
+	<select id="test15" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBSRCLIB.WEBTEST1('NNN','   ')
+	]]>
+	</select>
+	
+	<select id="test1" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBSRCLIB.WEBTEST2('123','')
+	]]>
+	</select>
+	
+	<select id="test4" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		CALL WEBSRCLIB.@ZSRCCPY1
+	]]>
+	</select>	
+	
+	<select id="test12" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		SELECT COUNT(*) FROM WEBSRCLIB.@ZOBJLST
+		
+	]]>
+	</select>
+	
+	<select id="test11" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		SELECT COUNT(*) FROM MCLISDLIB.MC120M@
+	]]>
+	</select>
+	
+</mapper>

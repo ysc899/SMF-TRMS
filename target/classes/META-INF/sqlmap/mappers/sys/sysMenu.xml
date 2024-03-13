@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sysMenu">
+	
+	<select id="sysMenuList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS001R1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_MCD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_MNM, mode=IN, jdbcType=VARCHAR}
+							  
+							  ) 
+	]]>
+	</select>
+	
+	<select id="sysMenuAgrList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS001R3(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_AGR, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	
+	
+	<select id="sysMenuDtl" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS001R2(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_PMCD, mode=IN, jdbcType=VARCHAR}
+							  
+							  ) 
+	]]>
+	</select>
+	
+	<select id="sysMenuChkSave" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS001CC(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_MCD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PMCD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_SEQ, mode=IN, jdbcType=DECIMAL}
+							  , #{I_MNM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PTH, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ICN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UYN, mode=IN, jdbcType=VARCHAR}
+							  
+							  ) 
+	]]>
+	</select>
+	
+	<insert id="sysMenuSave" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS001C(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_MCD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PMCD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_SEQ, mode=IN, jdbcType=DECIMAL}
+							  , #{I_MNM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PTH, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ICN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UYN, mode=IN, jdbcType=VARCHAR}
+							  
+							  ) 
+	]]>
+	</insert>
+	
+	<update id="sysMenuUdt" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS001U(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_MCD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PMCD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_SEQ, mode=IN, jdbcType=DECIMAL}
+							  , #{I_MNM, mode=IN, jdbcType=VARCHAR}
+							  , #{I_PTH, mode=IN, jdbcType=VARCHAR}
+							  , #{I_ICN, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UYN, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</update>
+	
+	<delete id="sysMenuDel" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS001D( #{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_MCD, mode=IN, jdbcType=VARCHAR}
+							  
+							  ) 
+	]]>
+	</delete>
+	
+</mapper>

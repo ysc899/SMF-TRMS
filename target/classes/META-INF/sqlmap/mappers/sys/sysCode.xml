@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sysCode">
+        
+    <select id="sysCodeList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+        <![CDATA[
+        call WEBOBJLIB.MWS002R1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+                              , #{I_UID, mode=IN, jdbcType=VARCHAR}
+                              , #{I_IP, mode=IN, jdbcType=VARCHAR}
+                              , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              , #{I_SCD, mode=IN, jdbcType=VARCHAR}
+                              , #{I_CNM, mode=IN, jdbcType=VARCHAR}
+                              )
+    ]]>
+    
+    </select>
+    
+    <select id="sysCodeDtl" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWS002R2(#{I_COR, mode=IN, jdbcType=VARCHAR}
+                              , #{I_UID, mode=IN, jdbcType=VARCHAR}
+                              , #{I_IP, mode=IN, jdbcType=VARCHAR}
+                              , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              , #{I_PSCD, mode=IN, jdbcType=VARCHAR}
+                              ) 
+    ]]>
+    </select>
+    
+    <insert id="sysCodeSave" statementType="CALLABLE" parameterType="HashMap">
+        <![CDATA[
+        call WEBOBJLIB.MWS002C(
+        						#{I_COR, mode=IN, jdbcType=VARCHAR}
+                              , #{I_UID, mode=IN, jdbcType=VARCHAR}
+                              , #{I_IP, mode=IN, jdbcType=VARCHAR}
+                              , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              , #{I_SCD, mode=IN, jdbcType=VARCHAR}
+                              , #{I_PSCD, mode=IN, jdbcType=VARCHAR}
+                              , #{I_CNM, mode=IN, jdbcType=VARCHAR}
+                              , #{I_DSC, mode=IN, jdbcType=VARCHAR}
+                              , #{I_SEQ, mode=IN, jdbcType=DECIMAL}
+                              , #{I_RF1, mode=IN, jdbcType=VARCHAR}
+                              , #{I_RF2, mode=IN, jdbcType=VARCHAR}
+                              , #{I_RF3, mode=IN, jdbcType=VARCHAR}
+                              , #{I_UYN, mode=IN, jdbcType=VARCHAR}
+                              ) 
+    ]]> 
+    </insert>
+    
+    <insert id="sysCodeChkSave" statementType="CALLABLE" parameterType="HashMap">
+        <![CDATA[
+        call WEBOBJLIB.MWS002CC(
+        						#{I_COR, mode=IN, jdbcType=VARCHAR}
+                              , #{I_UID, mode=IN, jdbcType=VARCHAR}
+                              , #{I_IP, mode=IN, jdbcType=VARCHAR}
+                              , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              , #{I_SCD, mode=IN, jdbcType=VARCHAR}
+                              , #{I_PSCD, mode=IN, jdbcType=VARCHAR}
+                              , #{I_CNM, mode=IN, jdbcType=VARCHAR}
+                              , #{I_DSC, mode=IN, jdbcType=VARCHAR}
+                              , #{I_SEQ, mode=IN, jdbcType=DECIMAL}
+                              , #{I_RF1, mode=IN, jdbcType=VARCHAR}
+                              , #{I_RF2, mode=IN, jdbcType=VARCHAR}
+                              , #{I_RF3, mode=IN, jdbcType=VARCHAR}
+                              , #{I_UYN, mode=IN, jdbcType=VARCHAR}
+                              ) 
+    ]]> 
+    </insert>
+    
+    <update id="sysCodeUdt" statementType="CALLABLE" parameterType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWS002U( #{I_COR, mode=IN, jdbcType=VARCHAR} 
+        					  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+                              , #{I_IP, mode=IN, jdbcType=VARCHAR}
+                              , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{I_SCD, mode=IN, jdbcType=VARCHAR}
+                              , #{I_PSCD, mode=IN, jdbcType=VARCHAR}
+                              , #{I_CNM, mode=IN, jdbcType=VARCHAR}
+                              , #{I_DSC, mode=IN, jdbcType=VARCHAR}
+                              , #{I_SEQ, mode=IN, jdbcType=DECIMAL}
+                              , #{I_RF1, mode=IN, jdbcType=VARCHAR}
+                              , #{I_RF2, mode=IN, jdbcType=VARCHAR}
+                              , #{I_RF3, mode=IN, jdbcType=VARCHAR}                            
+                              , #{I_UYN, mode=IN, jdbcType=VARCHAR}
+                              ) 
+    ]]>
+    </update>
+    
+    <delete id="sysCodeDel" statementType="CALLABLE" parameterType="HashMap">
+    <![CDATA[
+        call WEBOBJLIB.MWS002D( #{I_COR, mode=IN, jdbcType=VARCHAR}
+                              , #{I_UID, mode=IN, jdbcType=VARCHAR}
+                              , #{I_IP, mode=IN, jdbcType=VARCHAR}
+                              , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              , #{I_SCD, mode=IN, jdbcType=VARCHAR}
+                              , #{I_PSCD, mode=IN, jdbcType=VARCHAR}
+                              ) 
+    ]]>
+    </delete>
+    
+    <select id="getCommCode" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS002R4(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+							  , #{I_PSCD, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+    <select id="getMC999DCommCode" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWC999R1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+							  , #{I_CD1, mode=IN, jdbcType=VARCHAR}
+							  , #{I_CD2, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+</mapper>

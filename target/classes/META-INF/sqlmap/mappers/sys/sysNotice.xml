@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sysNotice">
+	<resultMap id="rtn_hash_notice" type="java.util.HashMap">
+	    <result property="S014COR"  column="S014COR"/>
+	    <result property="S014SEQ"  column="S014SEQ"/>
+	    <result property="S014DCL"  column="S014DCL"/>
+	    <result property="S014PYN"  column="S014PYN"/>
+	    <result property="S014TIT"  column="S014TIT"/>
+	    <result property="S014CON"  column="S014CON" javaType="java.lang.String"/>
+	    <result property="S014SDV"  column="S014SDV"/>
+	    <result property="S014CUR"  column="S014CUR"/>
+	    <result property="S014PFR"  column="S014PFR"/>
+	    <result property="S014PTO"  column="S014PTO"/>
+	 </resultMap>
+
+	<select id="sysNoticeList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS014R1(	
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_UID, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_IP, 	mode=IN,  jdbcType=VARCHAR}	
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              , #{I_DCL,	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_PYN,	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_TIT,	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_CON,	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_FWDT,	mode=IN,  jdbcType=DECIMAL}
+                              , #{I_TWDT,	mode=IN,  jdbcType=DECIMAL}
+                              , #{I_PFR,	mode=IN,  jdbcType=DECIMAL}
+                              , #{I_PTO,	mode=IN,  jdbcType=DECIMAL}
+			) 
+		]]>
+	</select>
+	
+	<insert id="sysNoticeSave" statementType="CALLABLE" parameterType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS014MC(
+									#{I_COR,    mode=IN,  jdbcType=VARCHAR}
+								  , #{I_UID,    mode=IN,  jdbcType=VARCHAR}
+							  	  , #{I_IP,     mode=IN,  jdbcType=VARCHAR}
+							  	  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              	  , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+							  	  , #{I_SEQ,    mode=IN,  jdbcType=DECIMAL}
+							  	  , #{I_CNM,    mode=IN,  jdbcType=VARCHAR}
+							  	  , #{I_DNO,    mode=IN,  jdbcType=VARCHAR}
+							  	  , #{I_DCL,  	mode=IN,  jdbcType=VARCHAR}
+							  	  , #{I_SDV,  	mode=IN,  jdbcType=VARCHAR}
+							  	  , #{I_PYN,  	mode=IN,  jdbcType=VARCHAR}
+							  	  , #{I_PFR,  	mode=IN,  jdbcType=DECIMAL}
+							  	  , #{I_PTO,  	mode=IN,  jdbcType=DECIMAL}
+							  	  , #{I_LCO,  	mode=IN,  jdbcType=DECIMAL}
+							  	  , #{I_TCO,  	mode=IN,  jdbcType=DECIMAL}
+								  , #{I_TIT,  	mode=IN,  jdbcType=VARCHAR}
+								  , #{I_CON,  	mode=IN,  javaType=java.lang.String}
+			)
+		]]>
+	</insert>
+	
+	<select id="sysNoticeNextVal" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS014MS1(
+								#{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}	
+		)
+		]]>
+	</select>
+	
+	<insert id="noticeAttchSave" statementType="CALLABLE" parameterType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS014DC(
+									#{I_COR,  	mode=IN,  jdbcType=VARCHAR}
+								  , #{I_UID,  	mode=IN,  jdbcType=VARCHAR}
+							  	  , #{I_IP,   	mode=IN,  jdbcType=VARCHAR}
+								  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              	  , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+							  	  , #{I_SEQ,  	mode=IN,  jdbcType=DECIMAL}
+							  	  , #{I_FSQ,  	mode=IN,  jdbcType=DECIMAL}
+							  	  , #{I_FPT,  	mode=IN,  jdbcType=VARCHAR}
+								  , #{I_FNM,  	mode=IN,  jdbcType=VARCHAR}
+								  , #{I_FSNM, 	mode=IN,  jdbcType=VARCHAR}
+			)
+		]]>
+	</insert>
+	
+	<select id="noticeDtl" statementType="CALLABLE" parameterType="HashMap"  resultMap="rtn_hash_notice">
+		<![CDATA[
+			call WEBOBJLIB.MWS014R2(
+									#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+                              	  , #{I_UID, 	mode=IN,  jdbcType=VARCHAR}
+                              	  , #{I_IP, 	mode=IN,  jdbcType=VARCHAR}	
+								  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              	  , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+                              	  , #{I_SEQ, 	mode=IN,  jdbcType=DECIMAL}				 
+			) 
+		]]>
+	</select>
+	
+	<select id="noticeAttachList" statementType="CALLABLE" parameterType="HashMap"  resultType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS014DR(
+								#{I_COR, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_UID, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_IP, 	mode=IN,  jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+							  ,	#{I_SEQ, 	mode=IN,  jdbcType=DECIMAL}
+			)
+		]]>
+	</select>
+	
+	<delete id="noticeDelete" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWS014D( 
+								 #{I_COR, 		mode=IN, 		jdbcType=VARCHAR}
+								,#{I_UID,  		mode=IN, 		jdbcType=VARCHAR}
+                                ,#{I_IP,   		mode=IN, 		jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{S014SEQ,   	mode=IN, 		jdbcType=DECIMAL}
+					)
+	</delete>
+	
+	<delete id="attachDelete" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWS014DD( 
+								 #{I_COR, 		mode=IN, 		jdbcType=VARCHAR}
+								,#{I_UID,  		mode=IN, 		jdbcType=VARCHAR}
+                                ,#{I_IP,   		mode=IN, 		jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+								,#{S014SEQ,   	mode=IN, 		jdbcType=DECIMAL}
+					)
+	</delete>
+	
+	<update id="sysNoticeUpdate" statementType="CALLABLE" parameterType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS014MU(
+								#{I_COR,	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_UID,  	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_IP,   	mode=IN,  jdbcType=VARCHAR}
+                              ,	#{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+							  , #{I_SEQ,  	mode=IN,  jdbcType=DECIMAL}
+							  , #{I_CNM,  	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_DNO, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_DCL,  	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_SDV,  	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_PYN,  	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_PFR,   	mode=IN,  jdbcType=DECIMAL}
+                              , #{I_PTO,   	mode=IN,  jdbcType=DECIMAL}
+                              , #{I_LCO,  	mode=IN,  jdbcType=DECIMAL}
+							  , #{I_TCO,  	mode=IN,  jdbcType=DECIMAL}
+                              , #{I_TIT,  	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_CON,  	mode=IN,  javaType=java.lang.String}
+			)
+		]]>
+	</update>
+	
+	<update id="noticeAttchUpt" statementType="CALLABLE" parameterType="HashMap">
+		<![CDATA[
+			call WEBOBJLIB.MWS014DU(
+								#{I_COR,	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_UID,  	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_IP,   	mode=IN,  jdbcType=VARCHAR}
+                              ,	#{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+                              , #{O_ERRCOD,	mode=OUT, jdbcType=VARCHAR}
+							  , #{I_SEQ,  	mode=IN,  jdbcType=DECIMAL}
+							  , #{I_FPT,  	mode=IN,  jdbcType=VARCHAR}
+							  , #{I_FNM, 	mode=IN,  jdbcType=VARCHAR}
+                              , #{I_FSNM,  	mode=IN,  jdbcType=VARCHAR}
+			)
+		]]>
+	</update>
+	
+</mapper>

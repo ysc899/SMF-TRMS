@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sysRegExFormat">
+	
+	<select id="sysRegExFormatList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS009R1(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_F120PCD, mode=IN, jdbcType=VARCHAR}
+							  , #{I_F120FNM, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<select id="sysRegExFormatDtl" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS009R2(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_S009HOS, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</select>
+	
+	<delete id="sysRegExFormatDel" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS009D( #{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_S009HOS, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</delete>
+	
+	<insert id="sysRegExFormatSave" statementType="CALLABLE" parameterType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWS009C(#{I_COR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_UID, mode=IN, jdbcType=VARCHAR}
+							  , #{I_IP, mode=IN, jdbcType=VARCHAR}
+							  , #{O_MSGCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{O_ERRCOD, mode=OUT, jdbcType=VARCHAR}
+							  , #{I_S009STR, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009HOS, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009EXT, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009COL, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009001, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009002, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009003, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009004, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009005, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009006, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009007, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009008, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009009, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009010, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009011, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009012, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009013, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009014, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009015, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009016, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009017, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009018, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009019, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009020, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009021, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009022, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009023, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009024, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009044, mode=IN, jdbcType=VARCHAR}
+							  , #{I_S009045, mode=IN, jdbcType=VARCHAR}
+							  ) 
+	]]>
+	</insert>
+		
+</mapper>

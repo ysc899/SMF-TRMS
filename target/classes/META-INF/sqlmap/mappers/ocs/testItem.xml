@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="testItem">
+
+	<select id="testItemList" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWT001R1(
+					#{I_COR,		mode=IN,		jdbcType=VARCHAR}
+					,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+					,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+					,#{O_MSGCOD,	mode=OUT,		jdbcType=CHAR}
+					,#{O_ERRCOD,	mode=OUT,		jdbcType=CHAR}
+					,#{I_SERFNM,	mode=IN,		jdbcType=VARCHAR}
+					,#{I_SERNM,		mode=IN,		jdbcType=VARCHAR}
+					,#{I_HAK,		mode=IN,		jdbcType=VARCHAR}
+					,#{I_ISC,		mode=IN,		jdbcType=VARCHAR}
+					,#{I_ALHNM,		mode=IN,		jdbcType=VARCHAR}
+			) 
+	]]>
+	</select>
+	<select id="testItemDtl" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+	<![CDATA[
+		call WEBOBJLIB.MWT001R2(
+					#{I_COR,		mode=IN,		jdbcType=VARCHAR}
+					,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+					,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+					,#{O_MSGCOD,	mode=OUT,		jdbcType=CHAR}
+					,#{O_ERRCOD,	mode=OUT,		jdbcType=CHAR}
+					,#{I_GCD,		mode=IN,		jdbcType=VARCHAR}
+			) 
+	]]>
+	</select>
+</mapper>

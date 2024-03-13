@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="common">
+
+<!-- 	<resultMap type="BoardDTO" id="BoardDTO"> -->
+<!-- 		<result property="contents" column="contents" jdbcType="CLOB" javaType="java.lang.String" /> -->
+<!-- 	</resultMap> -->
+<!-- 	<parameterMap type="BoardDTO2" id="BoardDT2O"> -->
+<!-- 		<parameter property=""/> -->
+<!-- 	</parameterMap> -->
+ 
+    <!-- 메일 get  -->
+    <select id="getMail" statementType="CALLABLE" parameterType="HashMap" resultType="HashMap">
+        <![CDATA[
+        call WEBOBJLIB.MWS016R(
+								#{I_COR,		mode=IN,			jdbcType=VARCHAR}
+								,#{I_UID,		mode=IN,			jdbcType=VARCHAR}
+								,#{I_IP,		mode=IN,			jdbcType=VARCHAR}
+								,#{O_MSGCOD,	mode=OUT,			jdbcType=CHAR}
+								,#{O_ERRCOD,	mode=OUT,			jdbcType=CHAR}
+								,#{I_EKD,		mode=IN,			jdbcType=VARCHAR}
+								,#{O_TIT,		mode=OUT,			jdbcType=VARCHAR}
+								,#{O_HED,		mode=OUT,			jdbcType=VARCHAR}
+								,#{O_FOT,		mode=OUT,			jdbcType=VARCHAR}
+								,#{O_FNM,		mode=OUT,			jdbcType=VARCHAR}
+								,#{O_FSNM,		mode=OUT,			jdbcType=VARCHAR}
+                              )
+    ]]>
+    </select>
+    
+    <!-- 메일 log Insert -->
+	<insert id="saveMailLog" statementType="CALLABLE" parameterType="HashMap">
+		call WEBOBJLIB.MWS017C( 
+							#{I_COR,		mode=IN,		jdbcType=VARCHAR}
+							,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+							,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+							,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+							,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+							,#{I_EKD,		mode=IN,		jdbcType=VARCHAR}
+							,#{I_TMA,		mode=IN,		jdbcType=VARCHAR}
+							,#{I_TNM,		mode=IN,		jdbcType=VARCHAR}
+							,#{I_CMA,		mode=IN,		jdbcType=VARCHAR}
+							,#{I_CNM,		mode=IN,		jdbcType=VARCHAR}
+							,#{I_TIT,		mode=IN,		jdbcType=VARCHAR}
+							,#{I_CONT,		mode=IN,		javaType=java.lang.String}
+							,#{I_FMA,		mode=IN,		jdbcType=VARCHAR}
+							,#{I_FNM,		mode=IN,		jdbcType=VARCHAR}
+							,#{I_SYN,		mode=IN,		jdbcType=CHAR}
+							,#{I_FMS,		mode=IN,		jdbcType=VARCHAR}
+					)
+	</insert>
+	<!-- 이미지 파일 다운로드  -->
+	<insert id="ImgLogSave" statementType="CALLABLE" parameterType="HashMap">
+		call  WEBOBJLIB.MCWRKIMGC(
+			#{I_COR,		mode=IN,		jdbcType=VARCHAR}
+			,#{I_UID,		mode=IN,		jdbcType=VARCHAR}
+			,#{I_IP,		mode=IN,		jdbcType=VARCHAR}
+			,#{O_MSGCOD,	mode=OUT,		jdbcType=VARCHAR}
+			,#{O_ERRCOD,	mode=OUT,		jdbcType=VARCHAR}
+			,#{I_HOS,		mode=IN,		jdbcType=VARCHAR}
+			,#{I_DAT,		mode=IN,		jdbcType=DECIMAL}
+			,#{I_JNO,		mode=IN,		jdbcType=DECIMAL}
+			,#{I_GCD,		mode=IN,		jdbcType=VARCHAR}
+			,#{I_ACD,		mode=IN,		jdbcType=VARCHAR}
+			,#{I_BDT,		mode=IN,		jdbcType=DECIMAL}
+			,#{I_STS,		mode=IN,		jdbcType=DECIMAL}
+			,#{I_FILE_NM,	mode=IN,		jdbcType=VARCHAR}
+			)
+	</insert>
+</mapper>

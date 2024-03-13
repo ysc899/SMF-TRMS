@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+<!--     
+    <typeAliases>
+    	<typeAlias alias="empVO" type="egovframework.sample.emp.service.EmpVO" />
+    	<typeAlias alias="deptVO" type="egovframework.sample.dept.service.DeptVO" />
+    	<typeAlias alias="searchVO" type="egovframework.sample.cmmn.SearchVO" />
+    </typeAliases>
+ -->    
+    <mappers>
+        <mapper resource="META-INF/sqlmap/mappers/seegene.xml" />
+        <mapper resource="META-INF/sqlmap/mappers2/seegene1.xml" />
+   </mappers>
+<!-- 
+	<mappers>
+        <mapper resource="META-INF/sqlmap/mappers/mysql/department_mysql.xml" />
+        <mapper resource="META-INF/sqlmap/mappers/mysql/employee_mysql.xml" />
+   </mappers> 
+ -->
+ 
+ 	<!-- 마이바티스의 작동 규칙정의 -->
+<!-- 	<settings> -->
+<!-- 		<setting name="cacheEnabled" value="false"/> -->
+<!-- 		<setting name="useGeneratedKeys" value="false"/> -->
+<!-- 		<setting name="mapUnderscoreToCamelCase" value="true"/> -->
+<!-- 		<setting name="logImpl" value="LOG4J2"/> -->
+<!-- 	</settings>  -->
+ 
+</configuration>
