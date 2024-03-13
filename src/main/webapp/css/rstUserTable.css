@@ -1,0 +1,314 @@
+@CHARSET "UTF-8";
+	.col-md-12-t {
+		/* table 가로 사이즈 */
+		width: 100%;
+		float: left;
+		/* table 세로 사이즈 */
+		min-height: 1px;
+	}
+	.col-md-11-t {
+	  width: 89.66666667%;
+	    float: left;
+	  min-height: 1px;
+	}
+	.col-md-7-t {
+		width: 58.33333333%;
+		float: left;
+	  	min-height: 1px;
+	}
+	.col-md-5-t {
+		width: 41.66666667%;
+		float: left;
+	  	min-height: 1px;
+	}
+	.col-md-1-t {
+	  width: 10.33333333%;
+	  float: left;
+	  min-height: 1px;
+	}
+@media all and (min-width: 1363px) {
+	/* table 사이즈  */
+
+}
+
+/* @media all and (max-width: 1094px) {
+
+	table 사이즈 
+ 	.col-md-7-t {
+		width: 58.33333333%;
+		float: left;
+	  	min-height: 1px;
+	}
+	.col-md-5-t {
+		width: 41.66666667%;
+		float: left;
+	  	min-height: 1px;
+	}
+	.col-md-10-t {
+    	width: 84.33333333%;
+    	float: left;
+  		min-height: 1px;
+  	}
+	.col-md-2-t {
+    	width: 15.66666667%;
+    	float: left;
+  		min-height: 1px;
+  	}
+ 	
+} */
+@media screen and (max-width : 1640px){
+	.col-md-12-t {
+		/* table 가로 사이즈 */
+		width: 100%;
+		float: left;
+		/* table 세로 사이즈 */
+		min-height: 1px;
+	}
+	.col-md-11-t {
+	  width: 88.66666667%;
+	    float: left;
+	  min-height: 1px;
+	}
+	.col-md-7-t {
+		width: 58.33333333%;
+		float: left;
+	  	min-height: 1px;
+	}
+	.col-md-5-t {
+		width: 41.66666667%;
+		float: left;
+	  	min-height: 1px;
+	}
+	.col-md-1-t {
+	  width: 11.33333333%;
+	  float: left;
+	  min-height: 1px;
+	}
+	
+}
+@media screen and (max-width : 1364px){
+	/* table 사이즈  */
+ 	.col-md-7-t {
+		width: 58.33333333%;
+		float: left;
+	  	min-height: 1px;
+	}
+	.col-md-5-t {
+		width: 41.66666667%;
+		float: left;
+	  	min-height: 1px;
+	}
+	.col-md-10-t {
+    	width: 84.33333333%;
+    	float: left;
+  		min-height: 1px;
+  	}
+	.col-md-2-t {
+    	width: 15.66666667%;
+    	float: left;
+  		min-height: 1px;
+  	}
+} 
+
+/* @media screen and (max-width : 549px){
+	body * {
+		font-size: 10px;
+	}
+}
+@media screen and (min-width : 550px){
+	body * {
+		font-size: 11px;
+	}
+} */ 
+@media screen and (max-width : 1380px){
+	body * {
+		font-size: 13px;
+	}
+}
+@media screen and (max-width : 1080px){
+	body * {
+		font-size: 12px;
+	}
+}
+
+/* @media screen and (max-width : 1080px){
+	body * {
+		font-size: 10px;
+	}
+} */
+/* @media screen and (min-width : 1550px){
+	body * {
+		font-size: 14px;
+	}
+} */
+
+
+@media screen and (max-width : 920px){
+	/* table 사이즈  */
+ 	.col-md-10-t {
+    	width: 81.33333333%;
+    	float: left;
+  		min-height: 1px;
+  	}
+	.col-md-2-t {
+    	width: 18.66666667%;
+    	float: left;
+  		min-height: 1px;
+  	}
+} 
+	
+.con_wrap_t{position:relative;padding:5px 5px 0px 5px;box-sizing:border-box;}
+.con_wrap_t .title_area{position:relative;padding:0 0 0px; /* background-color:#999; */ border-radius:13px;}
+.con_wrap_t .title_area:after{display:block;clear:both;content:'';}
+.con_wrap_t .title_area:before{display:block;position:absolute;top:0px;left:0px;width:174px;height:35px;background:url(../images/bg_tit_h3_a.png) no-repeat;content:'';z-index:10}
+.con_wrap_t .title_area .tit_h3{float:left;position:relative;margin:0 0 0 15px;font-size:20px;font-weight:700;color:#670c0f;line-height:44px; z-index:10; letter-spacing:-2px}
+.con_wrap_t .con_section{position:relative;min-height:50px;padding:0px 10px 10px 10px;margin:-20px 0 0;background-color:#fff;border-radius:0 13px 13px;}
+ 
+ /* 검색영역 더보기 사이즈 */
+.srch_wrap .btn_open_t {
+    background-color: #5d5d5d;
+    margin: 5px 4px 0px 0px;
+    border-radius: 6px;
+    display: inline-block;
+    float: right;
+    position: relative;
+    padding: 0 5px 0 26px;
+    line-height: 30px;
+    /* font-size: 13px; */
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+.srch_wrap .btn_open_t:before {
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    width: 21px;
+    height: 21px;
+    background: url(../images/ico_btn_srch.png) no-repeat;
+    content: '';
+    transition: transform .15s, -webkit-transform .15s;
+    -webkit-font-smoothing: antialiased;
+    transform: translate(0, 0);
+} 
+
+.srch_wrap .open .btn_open_t:before{-webkit-transform: rotate(180deg);transform: rotate(180deg);}
+.con_wrap_t .con_section {margin : 0px 0px}
+ 
+
+/* 검색 영역 */
+.fleft {
+	float: left;
+	padding-right: 5px;
+	margin-top: 10px;
+}
+.main_srch_box .btn_srch_t{height:30px;padding:0 15px;background-color:#c7171d; border-radius:5px;line-height:29px;color:#fff}
+
+.container-fluid.container-fluid-inner .con_wrap_t {
+    padding: 0 0 10px 0;
+} 
+.select_area_t{display:inline-block;position:relative;min-width:0px;height:30px;vertical-align:middle}
+
+.fmgbot {
+	/* margin-bottom: 10px; */	
+}
+
+ /* 버튼 */
+.btn-sm_t {
+   	padding: 4px 10px;
+   	font-size: 12px;
+   	line-height: 1.5;
+   	border-radius: 6px;
+}
+.tit_btn_area_t {
+	float: right;
+    margin: -8px 20px 0 0;
+    line-height: 42px;
+    text-align: right;
+} 
+
+
+.main_srch_box .label_basic_t{
+	min-width : 0px;
+	float : left;
+	margin-right: 2px;
+  	margin-top: 5px;
+	margin-bottom: 5px;
+	
+}
+
+#rstListDiv{
+	min-width: 400px;
+	padding-left: 15px;
+}
+
+#dtlDiv{
+	min-width: 500px;
+	padding-right: 15px;
+}
+
+#containerDiv{
+	min-width: 1024px;
+}
+
+/* 
+@media screen and (max-device-width : 920px){
+	
+	#rstListDiv{
+		min-width: 250px;
+	}
+
+	#dtlDiv{
+		min-width: 300px;
+	}
+
+	#containerDiv{
+		min-width: 700px;
+	}
+} 
+*/
+
+.btn-info{
+    background-color: #5d5d5d;
+    margin-bottom : 5px;
+    border-radius: 6px;
+    display: inline-block;
+    float: right;
+    position: relative;
+    padding: 0 5px 0 5px;
+    line-height: 30px;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+
+.container-fluid {
+	
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.con_section.row{
+	border-radius: 0px;
+	border-bottom: 1px solid #c7171d;
+	padding-left: 17px;
+}
+
+.floatLeft .srch_item_v1{display: inline-block;}
+.floatLeft .srch_item_v2{display: inline-block;}
+
+.srch_box_inner .srch_item_v1{width:352px}
+.srch_box_inner .srch_item_v2{width:185px}
+
+.floatLeft2 {
+	margin-top : 10px;
+	float : left;
+	/* width : 48%; */
+}
+
+/* @media screen and (max-width: 1555px){
+	.floatLeft2 {
+		width : 100%;
+	}
+} */

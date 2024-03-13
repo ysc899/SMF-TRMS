@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+	   					   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	   					   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+	<!--
+		- The controllers are autodetected POJOs labeled with the @Controller annotation.
+	-->
+	<context:component-scan base-package="kr.co.softtrain, egovframework.sample.cmmn">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- @ResponseBody 어노테이션이 동작 가능하도록 설정 -->
+	<mvc:annotation-driven/>
+	
+	
+	<!--
+        - This bean resolves specific types of exceptions to corresponding logical view names for error views. 
+        - The default behaviour of DispatcherServlet is to propagate all exceptions to the servlet container: 
+        - this will happen here with all other types of exceptions.
+        - 에러에 따른 페이지 변경 처리
+    -->
+<!-- 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> -->
+<!-- 		<property name="defaultErrorView" value="cmmn/bizError" /> -->
+<!-- 		<property name="exceptionMappings"> -->
+<!-- 			<props> -->
+<!--                 <prop key="org.springframework.dao.DataAccessException">/cmmn/dataAccessFailure</prop> -->
+<!--                 <prop key="org.springframework.transaction.TransactionException">/cmmn/transactionFailure</prop> -->
+<!--                 <prop key="egovframework.rte.fdl.cmmn.exception.EgovBizException">/cmmn/bizError</prop> -->
+<!-- 			</props> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+ <mvc:interceptors>     
+  <mvc:interceptor>  
+   <mvc:mapping path="/*"/>       
+    <mvc:exclude-mapping path="/login.do"/>
+    <mvc:exclude-mapping path="/index.do"/>
+    <mvc:exclude-mapping path="/CallMessage.do"/>
+    <mvc:exclude-mapping path="/rotateImage.do"/>
+   <bean class="egovframework.sample.cmmn.LoginInterceptor" />
+  </mvc:interceptor> 
+ </mvc:interceptors>
+	<!--
+        - This bean configures the 'prefix' and 'suffix' properties of InternalResourceViewResolver, which resolves logical view names returned by Controllers. 
+        - For example, a logical view name of "vets" will be mapped to "/WEB-INF/jsp/vets.jsp".
+        - 논리적인 View 이름을 사용하여 템플릿 파일 장원을 사용하여 랜더링 되는 View 객체를 결정한다
+    -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
+		  p:viewClass="org.springframework.web.servlet.view.JstlView" 
+		  p:prefix="/WEB-INF/jsp/" 
+		  p:suffix=".jsp" />
+	
+	
+	<!-- Pagination Tag -->
+    <bean id="imageRenderer" class="egovframework.sample.cmmn.EgovImgPaginationRenderer" />
+    <bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
+        <property name="rendererType">
+            <map>
+                <entry key="image" value-ref="imageRenderer"/> 
+            </map>
+        </property>
+    </bean>
+	<!--// Pagination Tag -->
+	
+	<bean id="multipartResolver"
+         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize">
+            <value>1048576000</value>
+        </property>
+	</bean>
+	
+	
+</beans>

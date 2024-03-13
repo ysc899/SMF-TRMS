@@ -1,0 +1,82 @@
+/**
+ * jquery-bootstrap-scrolling-tabs
+ * @version v0.0.8
+ * @link https://github.com/mikejacobson/jquery-bootstrap-scrolling-tabs
+ * @author Mike Jacobson <michaeljjacobson1@gmail.com>
+ * @license MIT License, http://www.opensource.org/licenses/MIT
+ */
+/* line 13, jquery.scrolling-tabs.scss */
+.scrtabs-tab-container * {
+  box-sizing: border-box;
+}
+
+/* line 17, jquery.scrolling-tabs.scss */
+.scrtabs-tab-container {
+  height: 40px;
+}
+/* line 19, jquery.scrolling-tabs.scss */
+.scrtabs-tab-container .tab-content {
+  clear: left;
+}
+
+/* line 24, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-fixed-container {
+  float: left;
+  height: 40px;
+  overflow: hidden;
+  width: 100% !important;
+}
+
+/* line 31, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-movable-container {
+  position: relative;
+}
+/* line 33, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-movable-container .tab-content {
+  display: none;
+}
+
+
+.scrtabs-tab-container.scrtabs-rtl .scrtabs-tabs-movable-container > ul.nav-tabs {
+  padding-right: 0; }
+
+/* line 38, jquery.scrolling-tabs.scss */
+.scrtabs-tab-scroll-arrow {
+  border: 1px solid #dddddd;
+  border-top: none;
+  color: #428bca;
+  cursor: pointer;
+  float: left;
+  font-size: 12px;
+  height: 40px;
+  margin-bottom: -1px;
+  padding-left: 2px;
+  padding-top: 13px;
+  width: 20px;
+}
+/* line 50, jquery.scrolling-tabs.scss */
+.scrtabs-tab-scroll-arrow:hover {
+}
+
+
+.scrtabs-tab-scroll-arrow,
+.scrtabs-tab-scroll-arrow .scrtabs-click-target {
+  cursor: pointer; }
+
+.scrtabs-tab-scroll-arrow.scrtabs-with-click-target {
+  cursor: default; }
+
+/* line 55, jquery.scrolling-tabs.scss */
+.scrtabs-tab-scroll-arrow.scrtabs-disable {
+  color: #ddd;
+  cursor: default;
+}
+
+.scrtabs-tab-scroll-arrow.scrtabs-disable:hover {
+  background-color: initial; }
+
+
+/* line 60, jquery.scrolling-tabs.scss */
+.scrtabs-tabs-fixed-container ul.nav-tabs > li {
+  white-space: nowrap;
+}
